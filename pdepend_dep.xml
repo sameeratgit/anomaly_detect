@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies generated="2017-05-30T04:33:38" pdepend="2.5.0">
+  <package name="PDepend">
+    <class name="Application">
+      <efferent>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\DependencyInjection" name="PdependExtension"/>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+        <type namespace="Symfony\Component\DependencyInjection\ParameterBag" name="ParameterBag"/>
+        <type namespace="PDepend\DependencyInjection\Compiler" name="ProcessListenerPass"/>
+        <type namespace="Symfony\Component\DependencyInjection\Loader" name="XmlFileLoader"/>
+        <type namespace="Symfony\Component\Config" name="FileLocator"/>
+		<type namespace="PDepend\DbusUI" name="ResultPrinter" />
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Application.php"/>
+    </class>
+    <class name="Engine">
+      <efferent>
+        <type namespace="PDepend\Util" name="Configuration"/>
+        <type namespace="PDepend\Util\Cache" name="CacheFactory"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFactory"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="NullArtifactFilter"/>
+        <type namespace="PDepend\Input" name="CompositeFilter"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+        <type namespace="PDepend\Input" name="Filter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="" name="OutOfBoundsException"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserGeneric"/>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="" name="AppendIterator"/>
+        <type namespace="PDepend\Input" name="Iterator"/>
+        <type namespace="" name="GlobIterator"/>
+        <type namespace="" name="RecursiveIteratorIterator"/>
+        <type namespace="" name="RecursiveDirectoryIterator"/>
+        <type namespace="" name="ArrayIterator"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerCacheAware"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Engine.php"/>
+    </class>
+    <interface name="ProcessListener">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/ProcessListener.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\DbusUI">
+    <class name="ResultPrinter">
+      <efferent>
+		<type namespace="PDepend" name="Application"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\DbusUI" name="Dbus"/>
+        <type namespace="PDepend\DbusUI" name="DBusUInt32"/>
+        <type namespace="PDepend\DbusUI" name="DBusArray"/>
+        <type namespace="PDepend\DbusUI" name="DBusDict"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DbusUI/ResultPrinter.php"/>
+    </class>
+  </package>
+</dependencies>
