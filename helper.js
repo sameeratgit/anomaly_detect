@@ -1,10 +1,9 @@
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
 var path = require('path');
-var xmlFilePath = 'pdepend_dep.xml';
 
 //Parsing XML to JSON
-exports.parseXml = function (cb) {
+exports.parseXml = function (xmlFilePath, cb) {
     fs.readFile(path.join(__dirname, xmlFilePath), {
         encoding: 'utf-8'
     }, function (err, xml) {
@@ -18,6 +17,17 @@ exports.parseXml = function (cb) {
             });
         } else {
             cb(err);
+        }
+    });
+}
+
+//Save data to file
+exports.saveToFile = function (data, cb) {
+    fs.writeFile(data.outputFile, JSON.stringify(data.output), function (error) {
+        if (error) {
+            cb(error);
+        } else {
+            cb(null, true);
         }
     });
 }

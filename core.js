@@ -1,7 +1,7 @@
 var helper = require("./helper.js");
 
-exports.getPackageData = function (cb) {
-    helper.parseXml(function (error, data) {
+exports.getPackageData = function (inputFile, cb) {
+    helper.parseXml(inputFile, function (error, data) {
         if (error) {
             cb(error);
         } else {

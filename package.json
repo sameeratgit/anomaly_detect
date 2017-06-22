@@ -1,0 +1,28 @@
+{
+  "name": "Anomaly Detection",
+  "private": true,
+  "version": "1.0.0",
+  "description": "description",
+  "keywords": [],
+  "dependencies": {
+    "async": "^2.4.1",
+    "fs": "0.0.1-security",
+    "xml2js": "^0.4.17"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {},
+  "bugs": {
+    "url": "#"
+  },
+  "homepage": "#"
+}
