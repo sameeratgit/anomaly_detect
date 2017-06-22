@@ -18,7 +18,10 @@ var queue = async.queue(function (data, callback) {
     var _baseClass = packageClassListItem.className;
 
     var _output = {};
-    _output[_basePackage + ':' + _baseClass] = {};
+
+    var _baseName = _basePackage + ':' + _baseClass;
+
+    _output[_baseName] = {};
 
     packageData.forEach(function (packageItem) {
 
@@ -31,8 +34,9 @@ var queue = async.queue(function (data, callback) {
             packageClass.forEach(function (classItem) {
 
                 var className = classItem.$.name;
+                var _currentName = packageName + ':' + className;
 
-                _output[_basePackage + ':' + _baseClass][packageName + ':' + className] = {};
+                _output[_baseName][_currentName] = {};
 
                 var efferentTypes = classItem.efferent[0].type;
                 if (efferentTypes) {
@@ -40,7 +44,7 @@ var queue = async.queue(function (data, callback) {
                         var _effNamespace = efferentTypeItem.$.namespace;
                         var _effName = efferentTypeItem.$.name;
                         if (_basePackage == _effNamespace && _baseClass == _effName) {
-                            _output[_basePackage + ':' + _baseClass][packageName + ':' + className].efferent = 1;
+                            _output[_baseName][_currentName].efferent = 1;
                         }
                     });
                 }
@@ -51,7 +55,7 @@ var queue = async.queue(function (data, callback) {
                         var _affNamespace = afferentTypeItem.$.namespace;
                         var _affName = afferentTypeItem.$.name;
                         if (_basePackage == _affNamespace && _baseClass == _affName) {
-                            _output[_basePackage + ':' + _baseClass][packageName + ':' + className].afferent = 1;
+                            _output[_baseName][_currentName].afferent = 1;
                         }
                     });
                 }
@@ -65,8 +69,9 @@ var queue = async.queue(function (data, callback) {
             packageInterface.forEach(function (classItem) {
 
                 var className = classItem.$.name;
+                var _currentName = packageName + ':' + className;
 
-                _output[_basePackage + ':' + _baseClass][packageName + ':' + className] = {};
+                _output[_baseName][_currentName] = {};
 
                 var efferentTypes = classItem.efferent[0].type;
                 if (efferentTypes) {
@@ -74,7 +79,7 @@ var queue = async.queue(function (data, callback) {
                         var _effNamespace = efferentTypeItem.$.namespace;
                         var _effName = efferentTypeItem.$.name;
                         if (_basePackage == _effNamespace && _baseClass == _effName) {
-                            _output[_basePackage + ':' + _baseClass][packageName + ':' + className].efferent = 1;
+                            _output[_baseName][_currentName].efferent = 1;
                         }
                     });
                 }
@@ -85,7 +90,7 @@ var queue = async.queue(function (data, callback) {
                         var _affNamespace = afferentTypeItem.$.namespace;
                         var _affName = afferentTypeItem.$.name;
                         if (_basePackage == _affNamespace && _baseClass == _affName) {
-                            _output[_basePackage + ':' + _baseClass][packageName + ':' + className].afferent = 1;
+                            _output[_baseName][_currentName].afferent = 1;
                         }
                     });
                 }
