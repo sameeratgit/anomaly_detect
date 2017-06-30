@@ -1,0 +1,3225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies generated="2017-05-30T04:33:38" pdepend="2.5.0">
+  <package name="PDepend">
+    <class name="Application">
+      <efferent>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\DependencyInjection" name="PdependExtension"/>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+        <type namespace="Symfony\Component\DependencyInjection\ParameterBag" name="ParameterBag"/>
+        <type namespace="PDepend\DependencyInjection\Compiler" name="ProcessListenerPass"/>
+        <type namespace="Symfony\Component\DependencyInjection\Loader" name="XmlFileLoader"/>
+        <type namespace="Symfony\Component\Config" name="FileLocator"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Application.php"/>
+    </class>
+    <class name="Engine">
+      <efferent>
+        <type namespace="PDepend\Util" name="Configuration"/>
+        <type namespace="PDepend\Util\Cache" name="CacheFactory"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFactory"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="NullArtifactFilter"/>
+        <type namespace="PDepend\Input" name="CompositeFilter"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+        <type namespace="PDepend\Input" name="Filter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="" name="OutOfBoundsException"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserGeneric"/>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="" name="AppendIterator"/>
+        <type namespace="PDepend\Input" name="Iterator"/>
+        <type namespace="" name="GlobIterator"/>
+        <type namespace="" name="RecursiveIteratorIterator"/>
+        <type namespace="" name="RecursiveDirectoryIterator"/>
+        <type namespace="" name="ArrayIterator"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerCacheAware"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Engine.php"/>
+    </class>
+    <interface name="ProcessListener">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/ProcessListener.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\DbusUI">
+    <class name="ResultPrinter">
+      <efferent>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\DbusUI" name="Dbus"/>
+        <type namespace="PDepend\DbusUI" name="DBusUInt32"/>
+        <type namespace="PDepend\DbusUI" name="DBusArray"/>
+        <type namespace="PDepend\DbusUI" name="DBusDict"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DbusUI/ResultPrinter.php"/>
+    </class>
+  </package>
+  <package name="PDepend\DependencyInjection\Compiler">
+    <class name="ProcessListenerPass">
+      <efferent>
+        <type namespace="Symfony\Component\DependencyInjection\Compiler" name="CompilerPassInterface"/>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+        <type namespace="Symfony\Component\DependencyInjection" name="Reference"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Application"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DependencyInjection/Compiler/ProcessListenerPass.php"/>
+    </class>
+  </package>
+  <package name="PDepend\DependencyInjection">
+    <class name="Configuration">
+      <efferent>
+        <type namespace="Symfony\Component\Config\Definition" name="ConfigurationInterface"/>
+        <type namespace="PDepend\Util" name="FileUtil"/>
+        <type namespace="PDepend\Util" name="Workarounds"/>
+        <type namespace="Symfony\Component\Config\Definition\Builder" name="TreeBuilder"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\DependencyInjection" name="PdependExtension"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DependencyInjection/Configuration.php"/>
+    </class>
+    <class name="Extension">
+      <efferent>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+        <type namespace="Symfony\Component\DependencyInjection\Loader" name="XmlFileLoader"/>
+        <type namespace="Symfony\Component\Config" name="FileLocator"/>
+        <type namespace="Symfony\Component\DependencyInjection\Loader" name="YamlFileLoader"/>
+        <type namespace="Symfony\Component\Config\Definition\Builder" name="ArrayNodeDefinition"/>
+        <type namespace="" name="ReflectionClass"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\DependencyInjection" name="ExtensionManager"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DependencyInjection/Extension.php"/>
+    </class>
+    <class name="ExtensionManager">
+      <efferent>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\DependencyInjection" name="Extension"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\DependencyInjection" name="PdependExtension"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DependencyInjection/ExtensionManager.php"/>
+    </class>
+    <class name="PdependExtension">
+      <efferent>
+        <type namespace="Symfony\Component\DependencyInjection\Extension" name="Extension"/>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerBuilder"/>
+        <type namespace="PDepend\DependencyInjection" name="ExtensionManager"/>
+        <type namespace="PDepend\DependencyInjection" name="Configuration"/>
+        <type namespace="Symfony\Component\DependencyInjection\Loader" name="XmlFileLoader"/>
+        <type namespace="Symfony\Component\Config" name="FileLocator"/>
+        <type namespace="Symfony\Component\DependencyInjection\ParameterBag" name="ParameterBag"/>
+        <type namespace="" name="stdClass"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Application"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/DependencyInjection/PdependExtension.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Input">
+    <class name="CompositeFilter">
+      <efferent>
+        <type namespace="PDepend\Input" name="Filter"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Input/CompositeFilter.php"/>
+    </class>
+    <class name="ExcludePathFilter">
+      <efferent>
+        <type namespace="PDepend\Input" name="Filter"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Input/ExcludePathFilter.php"/>
+    </class>
+    <class name="ExtensionFilter">
+      <efferent>
+        <type namespace="PDepend\Input" name="Filter"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Input/ExtensionFilter.php"/>
+    </class>
+    <interface name="Filter">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Input" name="CompositeFilter"/>
+        <type namespace="PDepend\Input" name="ExcludePathFilter"/>
+        <type namespace="PDepend\Input" name="ExtensionFilter"/>
+        <type namespace="PDepend\Input" name="Iterator"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Input/Filter.php"/>
+    </interface>
+    <class name="Iterator">
+      <efferent>
+        <type namespace="" name="FilterIterator"/>
+        <type namespace="" name="Iterator"/>
+        <type namespace="PDepend\Input" name="Filter"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Input/Iterator.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Metrics">
+    <class name="AbstractAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CodeRankAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CohesionAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AbstractAnalyzer.php"/>
+    </class>
+    <class name="AbstractCachingAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerCacheAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AbstractCachingAnalyzer.php"/>
+    </class>
+    <interface name="AggregateAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AggregateAnalyzer.php"/>
+    </interface>
+    <interface name="Analyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="AggregateAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerCacheAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer.php"/>
+    </interface>
+    <interface name="AnalyzerCacheAware">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerCacheAware.php"/>
+    </interface>
+    <class name="AnalyzerFactory">
+      <efferent>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerFactory.php"/>
+    </class>
+    <interface name="AnalyzerFilterAware">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerFilterAware.php"/>
+    </interface>
+    <class name="AnalyzerIterator">
+      <efferent>
+        <type namespace="" name="FilterIterator"/>
+        <type namespace="" name="ArrayIterator"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerIterator.php"/>
+    </class>
+    <interface name="AnalyzerListener">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerListener.php"/>
+    </interface>
+    <interface name="AnalyzerNodeAware">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CodeRankAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CohesionAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerNodeAware.php"/>
+    </interface>
+    <interface name="AnalyzerProjectAware">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/AnalyzerProjectAware.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\Metrics\Analyzer">
+    <class name="ClassDependencyAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/ClassDependencyAnalyzer.php"/>
+    </class>
+    <class name="ClassLevelAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AggregateAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/ClassLevelAnalyzer.php"/>
+    </class>
+    <class name="CodeRankAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="StrategyFactory"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer.php"/>
+    </class>
+    <class name="CohesionAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CohesionAnalyzer.php"/>
+    </class>
+    <class name="CouplingAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CouplingAnalyzer.php"/>
+    </class>
+    <class name="CrapIndexAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AggregateAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Util\Coverage" name="Factory"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CrapIndexAnalyzer.php"/>
+    </class>
+    <class name="CyclomaticComplexityAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CyclomaticComplexityAnalyzer.php"/>
+    </class>
+    <class name="DependencyAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/DependencyAnalyzer.php"/>
+    </class>
+    <class name="HalsteadAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/HalsteadAnalyzer.php"/>
+    </class>
+    <class name="HierarchyAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/HierarchyAnalyzer.php"/>
+    </class>
+    <class name="InheritanceAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/InheritanceAnalyzer.php"/>
+    </class>
+    <class name="MaintainabilityIndexAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/MaintainabilityIndexAnalyzer.php"/>
+    </class>
+    <class name="NPathComplexityAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Util" name="MathUtil"/>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchLabel"/>
+        <type namespace="PDepend\Source\AST" name="ASTConditionalExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalXorExpression"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/NPathComplexityAnalyzer.php"/>
+    </class>
+    <class name="NodeCountAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/NodeCountAnalyzer.php"/>
+    </class>
+    <class name="NodeLocAnalyzer">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerFilterAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/NodeLocAnalyzer.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Metrics\Analyzer\CodeRankAnalyzer">
+    <interface name="CodeRankStrategyI">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="MethodStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="PropertyStrategy"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer/CodeRankStrategyI.php"/>
+    </interface>
+    <class name="InheritanceStrategy">
+      <efferent>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="CodeRankStrategyI"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer/InheritanceStrategy.php"/>
+    </class>
+    <class name="MethodStrategy">
+      <efferent>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="CodeRankStrategyI"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer/MethodStrategy.php"/>
+    </class>
+    <class name="PropertyStrategy">
+      <efferent>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="CodeRankStrategyI"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer/PropertyStrategy.php"/>
+    </class>
+    <class name="StrategyFactory">
+      <efferent>
+        <type namespace="" name="InvalidArgumentException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CodeRankAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Metrics/Analyzer/CodeRankAnalyzer/StrategyFactory.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Report">
+    <interface name="CodeAwareGenerator">
+      <efferent>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/CodeAwareGenerator.php"/>
+    </interface>
+    <interface name="FileAwareGenerator">
+      <efferent>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report" name="ReportGeneratorFactory"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/FileAwareGenerator.php"/>
+    </interface>
+    <class name="NoLogOutputException">
+      <efferent>
+        <type namespace="" name="LogicException"/>
+        <type namespace="PDepend\Report" name="ReportGenerator"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/NoLogOutputException.php"/>
+    </class>
+    <interface name="ReportGenerator">
+      <efferent>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/ReportGenerator.php"/>
+    </interface>
+    <class name="ReportGeneratorFactory">
+      <efferent>
+        <type namespace="Symfony\Component\DependencyInjection" name="ContainerInterface"/>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/ReportGeneratorFactory.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Report\Dependencies">
+    <class name="Xml">
+      <efferent>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+        <type namespace="" name="DOMDocument"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Util" name="Utf8Util"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="" name="DOMElement"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/Dependencies/Xml.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Report\Jdepend">
+    <class name="Chart">
+      <efferent>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+        <type namespace="" name="DOMDocument"/>
+        <type namespace="PDepend\Util" name="Utf8Util"/>
+        <type namespace="PDepend\Util" name="FileUtil"/>
+        <type namespace="PDepend\Util" name="ImageConvert"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/Jdepend/Chart.php"/>
+    </class>
+    <class name="Xml">
+      <efferent>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+        <type namespace="" name="DOMDocument"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Util" name="Utf8Util"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/Jdepend/Xml.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Report\Overview">
+    <class name="Pyramid">
+      <efferent>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+        <type namespace="" name="DOMDocument"/>
+        <type namespace="PDepend\Util" name="FileUtil"/>
+        <type namespace="PDepend\Util" name="ImageConvert"/>
+        <type namespace="" name="RuntimeException"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/Overview/Pyramid.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Report\Summary">
+    <class name="Xml">
+      <efferent>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report" name="FileAwareGenerator"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerProjectAware"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Report" name="NoLogOutputException"/>
+        <type namespace="" name="DOMDocument"/>
+        <type namespace="PDepend\Util" name="Utf8Util"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="" name="DOMElement"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Report/Summary/Xml.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\AST">
+    <class name="ASTAllocationExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTAllocationExpression.php"/>
+    </class>
+    <class name="ASTAnonymousClass">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTAnonymousClass.php"/>
+    </class>
+    <class name="ASTArguments">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArguments.php"/>
+    </class>
+    <class name="ASTArray">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion53"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion54"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArray.php"/>
+    </class>
+    <class name="ASTArrayElement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArrayElement.php"/>
+    </class>
+    <class name="ASTArrayIndexExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTIndexExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArrayIndexExpression.php"/>
+    </class>
+    <interface name="ASTArtifact">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics" name="AnalyzerNodeAware"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CodeRankAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CohesionAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="NullArtifactFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifact.php"/>
+    </interface>
+    <class name="ASTArtifactList">
+      <efferent>
+        <type namespace="" name="ArrayAccess"/>
+        <type namespace="" name="Iterator"/>
+        <type namespace="" name="Countable"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="" name="OutOfBoundsException"/>
+        <type namespace="" name="BadMethodCallException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report" name="CodeAwareGenerator"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReferenceIterator"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifactList.php"/>
+    </class>
+    <class name="ASTAssignmentExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTAssignmentExpression.php"/>
+    </class>
+    <class name="ASTBooleanAndExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTBooleanAndExpression.php"/>
+    </class>
+    <class name="ASTBooleanOrExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTBooleanOrExpression.php"/>
+    </class>
+    <class name="ASTBreakStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTBreakStatement.php"/>
+    </class>
+    <interface name="ASTCallable">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTClosure"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCallable.php"/>
+    </interface>
+    <class name="ASTCastExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCastExpression.php"/>
+    </class>
+    <class name="ASTCatchStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCatchStatement.php"/>
+    </class>
+    <class name="ASTClass">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="State"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="" name="BadMethodCallException"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="InheritanceAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTAnonymousClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClass.php"/>
+    </class>
+    <class name="ASTClassFqnPostfix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClassFqnPostfix.php"/>
+    </class>
+    <class name="ASTClassOrInterfaceRecursiveInheritanceException">
+      <efferent>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClassOrInterfaceRecursiveInheritanceException.php"/>
+    </class>
+    <class name="ASTClassOrInterfaceReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTParentReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitReference"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClassOrInterfaceReference.php"/>
+    </class>
+    <class name="ASTClassOrInterfaceReferenceIterator">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClassOrInterfaceReferenceIterator.php"/>
+    </class>
+    <class name="ASTClassReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClassReference.php"/>
+    </class>
+    <class name="ASTCloneExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCloneExpression.php"/>
+    </class>
+    <class name="ASTClosure">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTClosure.php"/>
+    </class>
+    <class name="ASTComment">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTComment.php"/>
+    </class>
+    <class name="ASTCompilationUnit">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCompilationUnit.php"/>
+    </class>
+    <class name="ASTCompilationUnitNotFoundException">
+      <efferent>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCompilationUnitNotFoundException.php"/>
+    </class>
+    <class name="ASTCompoundExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCompoundExpression.php"/>
+    </class>
+    <class name="ASTCompoundVariable">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTCompoundVariable.php"/>
+    </class>
+    <class name="ASTConditionalExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTConditionalExpression.php"/>
+    </class>
+    <class name="ASTConstant">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTConstant.php"/>
+    </class>
+    <class name="ASTConstantDeclarator">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTValue"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTConstantDeclarator.php"/>
+    </class>
+    <class name="ASTConstantDefinition">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTConstantDefinition.php"/>
+    </class>
+    <class name="ASTConstantPostfix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTConstantPostfix.php"/>
+    </class>
+    <class name="ASTContinueStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTContinueStatement.php"/>
+    </class>
+    <class name="ASTDeclareStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTValue"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTDeclareStatement.php"/>
+    </class>
+    <class name="ASTDoWhileStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTDoWhileStatement.php"/>
+    </class>
+    <class name="ASTEchoStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTEchoStatement.php"/>
+    </class>
+    <class name="ASTElseIfStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTElseIfStatement.php"/>
+    </class>
+    <class name="ASTEvalExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTEvalExpression.php"/>
+    </class>
+    <class name="ASTExitExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTExitExpression.php"/>
+    </class>
+    <class name="ASTExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTArray"/>
+        <type namespace="PDepend\Source\AST" name="ASTArrayElement"/>
+        <type namespace="PDepend\Source\AST" name="ASTCloneExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTEvalExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTExitExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTHeredoc"/>
+        <type namespace="PDepend\Source\AST" name="ASTIdentifier"/>
+        <type namespace="PDepend\Source\AST" name="ASTIncludeExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTIndexExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTInstanceOfExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTInvocation"/>
+        <type namespace="PDepend\Source\AST" name="ASTIssetExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTListExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalXorExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPostfixExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPrintExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTRequireExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTShiftLeftExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTShiftRightExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTStaticVariableDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableVariable"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTExpression.php"/>
+    </class>
+    <class name="ASTFieldDeclaration">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\AST" name="State"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFieldDeclaration.php"/>
+    </class>
+    <class name="ASTFinallyStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFinallyStatement.php"/>
+    </class>
+    <class name="ASTForInit">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTForInit.php"/>
+    </class>
+    <class name="ASTForStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTForStatement.php"/>
+    </class>
+    <class name="ASTForUpdate">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTForUpdate.php"/>
+    </class>
+    <class name="ASTForeachStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTForeachStatement.php"/>
+    </class>
+    <class name="ASTFormalParameter">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="" name="OutOfBoundsException"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFormalParameter.php"/>
+    </class>
+    <class name="ASTFormalParameters">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFormalParameters.php"/>
+    </class>
+    <class name="ASTFunction">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFunction.php"/>
+    </class>
+    <class name="ASTFunctionPostfix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTInvocation"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTFunctionPostfix.php"/>
+    </class>
+    <class name="ASTGlobalStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTGlobalStatement.php"/>
+    </class>
+    <class name="ASTGotoStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTGotoStatement.php"/>
+    </class>
+    <class name="ASTHeredoc">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTHeredoc.php"/>
+    </class>
+    <class name="ASTIdentifier">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTIdentifier.php"/>
+    </class>
+    <class name="ASTIfStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTIfStatement.php"/>
+    </class>
+    <class name="ASTIncludeExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTIncludeExpression.php"/>
+    </class>
+    <class name="ASTIndexExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTArrayIndexExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTStringIndexExpression"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTIndexExpression.php"/>
+    </class>
+    <class name="ASTInstanceOfExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTInstanceOfExpression.php"/>
+    </class>
+    <class name="ASTInterface">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassReference"/>
+        <type namespace="" name="BadMethodCallException"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTInterface.php"/>
+    </class>
+    <class name="ASTInvocation">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTFunctionPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethodPostfix"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTInvocation.php"/>
+    </class>
+    <class name="ASTIssetExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTIssetExpression.php"/>
+    </class>
+    <class name="ASTLabelStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTLabelStatement.php"/>
+    </class>
+    <class name="ASTListExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTListExpression.php"/>
+    </class>
+    <class name="ASTLiteral">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTLiteral.php"/>
+    </class>
+    <class name="ASTLogicalAndExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTLogicalAndExpression.php"/>
+    </class>
+    <class name="ASTLogicalOrExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTLogicalOrExpression.php"/>
+    </class>
+    <class name="ASTLogicalXorExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTLogicalXorExpression.php"/>
+    </class>
+    <class name="ASTMemberPrimaryPrefix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTMemberPrimaryPrefix.php"/>
+    </class>
+    <class name="ASTMethod">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="State"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnitNotFoundException"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="MethodStrategy"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitMethodCollisionException"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTMethod.php"/>
+    </class>
+    <class name="ASTMethodPostfix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTInvocation"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTMethodPostfix.php"/>
+    </class>
+    <class name="ASTNamespace">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HierarchyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeCountAnalyzer"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTNamespace.php"/>
+    </class>
+    <interface name="ASTNode">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTAnonymousClass"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTNode.php"/>
+    </interface>
+    <class name="ASTParameter">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameter"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTTypeArray"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTParameter.php"/>
+    </class>
+    <class name="ASTParentReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTParentReference.php"/>
+    </class>
+    <class name="ASTPostfixExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTPostfixExpression.php"/>
+    </class>
+    <class name="ASTPreDecrementExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTPreDecrementExpression.php"/>
+    </class>
+    <class name="ASTPreIncrementExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTPreIncrementExpression.php"/>
+    </class>
+    <class name="ASTPrintExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTPrintExpression.php"/>
+    </class>
+    <class name="ASTProperty">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTFieldDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="PropertyStrategy"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTProperty.php"/>
+    </class>
+    <class name="ASTPropertyPostfix">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTPropertyPostfix.php"/>
+    </class>
+    <class name="ASTRequireExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTRequireExpression.php"/>
+    </class>
+    <class name="ASTReturnStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTReturnStatement.php"/>
+    </class>
+    <class name="ASTScalarType">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTScalarType.php"/>
+    </class>
+    <class name="ASTScope">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptation"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTScope.php"/>
+    </class>
+    <class name="ASTScopeStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTScopeStatement.php"/>
+    </class>
+    <class name="ASTSelfReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTStaticReference"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTSelfReference.php"/>
+    </class>
+    <class name="ASTShiftLeftExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTShiftLeftExpression.php"/>
+    </class>
+    <class name="ASTShiftRightExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTShiftRightExpression.php"/>
+    </class>
+    <class name="ASTStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTBreakStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTCatchStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTContinueStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTDeclareStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTDoWhileStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTEchoStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTElseIfStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTFinallyStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTForStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTForeachStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTGlobalStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTGotoStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTIfStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTLabelStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTReturnStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTScopeStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTThrowStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptationAlias"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptationPrecedence"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTTryStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTUnsetStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTWhileStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTYieldStatement"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTStatement.php"/>
+    </class>
+    <class name="ASTStaticReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTStaticReference.php"/>
+    </class>
+    <class name="ASTStaticVariableDeclaration">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTStaticVariableDeclaration.php"/>
+    </class>
+    <class name="ASTString">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTString.php"/>
+    </class>
+    <class name="ASTStringIndexExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTIndexExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTStringIndexExpression.php"/>
+    </class>
+    <class name="ASTSwitchLabel">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTSwitchLabel.php"/>
+    </class>
+    <class name="ASTSwitchStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTSwitchStatement.php"/>
+    </class>
+    <class name="ASTThrowStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTThrowStatement.php"/>
+    </class>
+    <class name="ASTTrait">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTrait.php"/>
+    </class>
+    <class name="ASTTraitAdaptation">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTScope"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitAdaptation.php"/>
+    </class>
+    <class name="ASTTraitAdaptationAlias">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitAdaptationAlias.php"/>
+    </class>
+    <class name="ASTTraitAdaptationPrecedence">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitAdaptationPrecedence.php"/>
+    </class>
+    <class name="ASTTraitMethodCollisionException">
+      <efferent>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitMethodCollisionException.php"/>
+    </class>
+    <class name="ASTTraitReference">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitReference.php"/>
+    </class>
+    <class name="ASTTraitUseStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="State"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTraitUseStatement.php"/>
+    </class>
+    <class name="ASTTryStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTryStatement.php"/>
+    </class>
+    <class name="ASTType">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTNode"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTClosure"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTScalarType"/>
+        <type namespace="PDepend\Source\AST" name="ASTTypeArray"/>
+        <type namespace="PDepend\Source\AST" name="ASTTypeCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTType.php"/>
+    </class>
+    <class name="ASTTypeArray">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTypeArray.php"/>
+    </class>
+    <class name="ASTTypeCallable">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTTypeCallable.php"/>
+    </class>
+    <class name="ASTUnaryExpression">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTCastExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPreDecrementExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPreIncrementExpression"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTUnaryExpression.php"/>
+    </class>
+    <class name="ASTUnsetStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTUnsetStatement.php"/>
+    </class>
+    <class name="ASTValue">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTConstantDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTDeclareStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableDeclarator"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTValue.php"/>
+    </class>
+    <class name="ASTVariable">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTVariable.php"/>
+    </class>
+    <class name="ASTVariableDeclarator">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTValue"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTVariableDeclarator.php"/>
+    </class>
+    <class name="ASTVariableVariable">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTVariableVariable.php"/>
+    </class>
+    <class name="ASTWhileStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTWhileStatement.php"/>
+    </class>
+    <class name="ASTYieldStatement">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTYieldStatement.php"/>
+    </class>
+    <class name="AbstractASTArtifact">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="MethodStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="PropertyStrategy"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnitNotFoundException"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+        <type namespace="PDepend\Util\Coverage" name="CloverReport"/>
+        <type namespace="PDepend\Util\Coverage" name="Report"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/AbstractASTArtifact.php"/>
+    </class>
+    <class name="AbstractASTCallable">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReferenceIterator"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CyclomaticComplexityAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="MaintainabilityIndexAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/AbstractASTCallable.php"/>
+    </class>
+    <class name="AbstractASTClassOrInterface">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceRecursiveInheritanceException"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReferenceIterator"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassDependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="DependencyAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="MethodStrategy"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceRecursiveInheritanceException"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/AbstractASTClassOrInterface.php"/>
+    </class>
+    <class name="AbstractASTNode">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="" name="OutOfBoundsException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTAllocationExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTArguments"/>
+        <type namespace="PDepend\Source\AST" name="ASTAssignmentExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassFqnPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTClosure"/>
+        <type namespace="PDepend\Source\AST" name="ASTComment"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompoundExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompoundVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTConditionalExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstant"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantDefinition"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTFieldDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTForInit"/>
+        <type namespace="PDepend\Source\AST" name="ASTForUpdate"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameters"/>
+        <type namespace="PDepend\Source\AST" name="ASTLiteral"/>
+        <type namespace="PDepend\Source\AST" name="ASTMemberPrimaryPrefix"/>
+        <type namespace="PDepend\Source\AST" name="ASTPropertyPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTScope"/>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTString"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchLabel"/>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/AbstractASTNode.php"/>
+    </class>
+    <class name="AbstractASTType">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="" name="OutOfBoundsException"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitMethodCollisionException"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="ClassLevelAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="CouplingAnalyzer"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitMethodCollisionException"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/AbstractASTType.php"/>
+    </class>
+    <interface name="State">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTFieldDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/State.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\Source\AST\ASTArtifactList">
+    <interface name="ArtifactFilter">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="CollectionArtifactFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="NullArtifactFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifactList/ArtifactFilter.php"/>
+    </interface>
+    <class name="CollectionArtifactFilter">
+      <efferent>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifactList/CollectionArtifactFilter.php"/>
+    </class>
+    <class name="NullArtifactFilter">
+      <efferent>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifactList/NullArtifactFilter.php"/>
+    </class>
+    <class name="PackageArtifactFilter">
+      <efferent>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="ArtifactFilter"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/AST/ASTArtifactList/PackageArtifactFilter.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\ASTVisitor">
+    <interface name="ASTVisitListener">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/ASTVisitor/ASTVisitListener.php"/>
+    </interface>
+    <interface name="ASTVisitor">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="CodeRankStrategyI"/>
+        <type namespace="PDepend\Source\AST" name="ASTAllocationExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTAnonymousClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTArguments"/>
+        <type namespace="PDepend\Source\AST" name="ASTArray"/>
+        <type namespace="PDepend\Source\AST" name="ASTArrayElement"/>
+        <type namespace="PDepend\Source\AST" name="ASTArrayIndexExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTAssignmentExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBooleanOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTBreakStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTCastExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTCatchStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassFqnPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTCloneExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTClosure"/>
+        <type namespace="PDepend\Source\AST" name="ASTComment"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompoundExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompoundVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTConditionalExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstant"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantDefinition"/>
+        <type namespace="PDepend\Source\AST" name="ASTConstantPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTContinueStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTDeclareStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTDoWhileStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTEchoStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTElseIfStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTEvalExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTExitExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTFieldDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTFinallyStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTForInit"/>
+        <type namespace="PDepend\Source\AST" name="ASTForStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTForUpdate"/>
+        <type namespace="PDepend\Source\AST" name="ASTForeachStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTFormalParameters"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunctionPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTGlobalStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTGotoStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTHeredoc"/>
+        <type namespace="PDepend\Source\AST" name="ASTIdentifier"/>
+        <type namespace="PDepend\Source\AST" name="ASTIfStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTIncludeExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTInstanceOfExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTIssetExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLabelStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTListExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLiteral"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalAndExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalOrExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTLogicalXorExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTMemberPrimaryPrefix"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethodPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTParentReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTPostfixExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPreDecrementExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPreIncrementExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTPrintExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="ASTPropertyPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTRequireExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTReturnStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTScalarType"/>
+        <type namespace="PDepend\Source\AST" name="ASTScope"/>
+        <type namespace="PDepend\Source\AST" name="ASTScopeStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTShiftLeftExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTShiftRightExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTStaticReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTStaticVariableDeclaration"/>
+        <type namespace="PDepend\Source\AST" name="ASTString"/>
+        <type namespace="PDepend\Source\AST" name="ASTStringIndexExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchLabel"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTThrowStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptation"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptationAlias"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitAdaptationPrecedence"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTTryStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTType"/>
+        <type namespace="PDepend\Source\AST" name="ASTTypeArray"/>
+        <type namespace="PDepend\Source\AST" name="ASTTypeCallable"/>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTUnsetStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableDeclarator"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTWhileStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTYieldStatement"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitor"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/ASTVisitor/ASTVisitor.php"/>
+    </interface>
+    <class name="AbstractASTVisitListener">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/ASTVisitor/AbstractASTVisitListener.php"/>
+    </class>
+    <class name="AbstractASTVisitor">
+      <efferent>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitor"/>
+        <type namespace="" name="ArrayIterator"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="ASTVisitListener"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTParameter"/>
+        <type namespace="PDepend\Source\AST" name="ASTProperty"/>
+        <type namespace="" name="RuntimeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics" name="AbstractAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="InheritanceStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="MethodStrategy"/>
+        <type namespace="PDepend\Metrics\Analyzer\CodeRankAnalyzer" name="PropertyStrategy"/>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/ASTVisitor/AbstractASTVisitor.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\Builder">
+    <interface name="Builder">
+      <efferent>
+        <type namespace="" name="IteratorAggregate"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Builder/Builder.php"/>
+    </interface>
+    <interface name="BuilderContext">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Builder/BuilderContext.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\Source\Builder\BuilderContext">
+    <class name="GlobalBuilderContext">
+      <efferent>
+        <type namespace="PDepend\Source\Builder" name="BuilderContext"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Builder/BuilderContext/GlobalBuilderContext.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\Language\PHP">
+    <class name="AbstractPHPParser">
+      <efferent>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Util" name="IdBuilder"/>
+        <type namespace="PDepend\Source\Parser" name="TokenStack"/>
+        <type namespace="PDepend\Source\Parser" name="SymbolTable"/>
+        <type namespace="PDepend\Util" name="Log"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\Parser" name="TokenStreamEndException"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="State"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitUseStatement"/>
+        <type namespace="PDepend\Source\Parser" name="InvalidStateException"/>
+        <type namespace="PDepend\Source\AST" name="ASTAllocationExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Token"/>
+        <type namespace="PDepend\Source\AST" name="ASTStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTUnaryExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTSwitchLabel"/>
+        <type namespace="PDepend\Source\AST" name="ASTDeclareStatement"/>
+        <type namespace="PDepend\Source\AST" name="ASTIndexExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTArguments"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTArray"/>
+        <type namespace="PDepend\Source\AST" name="ASTClosure"/>
+        <type namespace="PDepend\Source\AST" name="ASTValue"/>
+        <type namespace="PDepend\Source\Parser" name="MissingValueException"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunctionPostfix"/>
+        <type namespace="PDepend\Source\AST" name="ASTVariableVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompoundVariable"/>
+        <type namespace="PDepend\Source\AST" name="ASTMemberPrimaryPrefix"/>
+        <type namespace="PDepend\Util" name="Type"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion53"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/AbstractPHPParser.php"/>
+    </class>
+    <class name="PHPBuilder">
+      <efferent>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\AST" name="ASTNamespace"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\Builder\BuilderContext" name="GlobalBuilderContext"/>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Util" name="Log"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassOrInterfaceReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTTrait"/>
+        <type namespace="PDepend\Source\AST" name="ASTTraitReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTClass"/>
+        <type namespace="PDepend\Source\AST" name="ASTClassReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTClassOrInterface"/>
+        <type namespace="PDepend\Source\AST" name="ASTSelfReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTParentReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTStaticReference"/>
+        <type namespace="PDepend\Source\AST" name="ASTArtifactList"/>
+        <type namespace="" name="BadMethodCallException"/>
+        <type namespace="PDepend\Util" name="Type"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPBuilder.php"/>
+    </class>
+    <class name="PHPParserGeneric">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion71"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserGeneric.php"/>
+    </class>
+    <class name="PHPParserVersion53">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\AST" name="ASTArray"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion54"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion53.php"/>
+    </class>
+    <class name="PHPParserVersion54">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion53"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\AST" name="ASTArray"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion55"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion54.php"/>
+    </class>
+    <class name="PHPParserVersion55">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion54"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion55.php"/>
+    </class>
+    <class name="PHPParserVersion56">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion55"/>
+        <type namespace="PDepend\Source\AST" name="ASTValue"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+        <type namespace="PDepend\Source\AST" name="ASTArguments"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion56.php"/>
+    </class>
+    <class name="PHPParserVersion70">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\AST" name="ASTAllocationExpression"/>
+        <type namespace="PDepend\Source\AST" name="ASTNode"/>
+        <type namespace="PDepend\Source\AST" name="ASTExpression"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion71"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion70.php"/>
+    </class>
+    <class name="PHPParserVersion71">
+      <efferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserGeneric"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPParserVersion71.php"/>
+    </class>
+    <class name="PHPTokenizerHelperVersion52">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="TokenException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPTokenizerHelperVersion52.php"/>
+    </class>
+    <class name="PHPTokenizerInternal">
+      <efferent>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokens"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerHelperVersion52"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Token"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Language/PHP/PHPTokenizerInternal.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\Parser">
+    <class name="InvalidStateException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/InvalidStateException.php"/>
+    </class>
+    <class name="MissingValueException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Token"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/MissingValueException.php"/>
+    </class>
+    <class name="NoActiveScopeException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Parser" name="SymbolTable"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/NoActiveScopeException.php"/>
+    </class>
+    <class name="ParserException">
+      <efferent>
+        <type namespace="" name="RuntimeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Source\Parser" name="InvalidStateException"/>
+        <type namespace="PDepend\Source\Parser" name="MissingValueException"/>
+        <type namespace="PDepend\Source\Parser" name="NoActiveScopeException"/>
+        <type namespace="PDepend\Source\Parser" name="TokenException"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/ParserException.php"/>
+    </class>
+    <class name="SymbolTable">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="NoActiveScopeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/SymbolTable.php"/>
+    </class>
+    <class name="TokenException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="ParserException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerHelperVersion52"/>
+        <type namespace="PDepend\Source\Parser" name="TokenStreamEndException"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/TokenException.php"/>
+    </class>
+    <class name="TokenStack">
+      <efferent>
+        <type namespace="PDepend\Source\Tokenizer" name="Token"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/TokenStack.php"/>
+    </class>
+    <class name="TokenStreamEndException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="TokenException"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/TokenStreamEndException.php"/>
+    </class>
+    <class name="UnexpectedTokenException">
+      <efferent>
+        <type namespace="PDepend\Source\Parser" name="TokenException"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Token"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion53"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion54"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Parser/UnexpectedTokenException.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Source\Tokenizer">
+    <class name="Token">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+        <type namespace="PDepend\Source\Parser" name="MissingValueException"/>
+        <type namespace="PDepend\Source\Parser" name="TokenStack"/>
+        <type namespace="PDepend\Source\Parser" name="UnexpectedTokenException"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Tokenizer/Token.php"/>
+    </class>
+    <interface name="Tokenizer">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+        <type namespace="PDepend\Source\Parser" name="MissingValueException"/>
+        <type namespace="PDepend\Source\Parser" name="TokenStreamEndException"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Tokenizer/Tokenizer.php"/>
+    </interface>
+    <interface name="Tokens">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="HalsteadAnalyzer"/>
+        <type namespace="PDepend\Metrics\Analyzer" name="NodeLocAnalyzer"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserGeneric"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion53"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion54"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion56"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion70"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPParserVersion71"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPTokenizerInternal"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Source/Tokenizer/Tokens.php"/>
+    </interface>
+  </package>
+  <package name="PDepend\TextUI">
+    <class name="Command">
+      <efferent>
+        <type namespace="PDepend" name="Application"/>
+        <type namespace="" name="Exception"/>
+        <type namespace="PDepend\TextUI" name="Runner"/>
+        <type namespace="PDepend\TextUI" name="ResultPrinter"/>
+        <type namespace="PDepend\DbusUI" name="ResultPrinter"/>
+        <type namespace="" name="RuntimeException"/>
+        <type namespace="PDepend\Util" name="Log"/>
+        <type namespace="PDepend\Util" name="ConfigurationInstance"/>
+        <type namespace="PDepend\Util" name="Workarounds"/>
+      </efferent>
+      <afferent/>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/TextUI/Command.php"/>
+    </class>
+    <class name="ResultPrinter">
+      <efferent>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Source\ASTVisitor" name="AbstractASTVisitListener"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Tokenizer" name="Tokenizer"/>
+        <type namespace="PDepend\Metrics" name="Analyzer"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/TextUI/ResultPrinter.php"/>
+    </class>
+    <class name="Runner">
+      <efferent>
+        <type namespace="PDepend\Report" name="ReportGeneratorFactory"/>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend" name="ProcessListener"/>
+        <type namespace="PDepend\Input" name="ExtensionFilter"/>
+        <type namespace="PDepend\Input" name="ExcludePathFilter"/>
+        <type namespace="PDepend\Source\AST\ASTArtifactList" name="PackageArtifactFilter"/>
+        <type namespace="" name="Exception"/>
+        <type namespace="" name="RuntimeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/TextUI/Runner.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Util\Cache">
+    <interface name="CacheDriver">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Metrics" name="AbstractCachingAnalyzer"/>
+        <type namespace="PDepend\Metrics" name="AnalyzerCacheAware"/>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTCallable"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\Builder" name="Builder"/>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\Util\Cache\Driver" name="FileCacheDriver"/>
+        <type namespace="PDepend\Util\Cache\Driver" name="MemoryCacheDriver"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/CacheDriver.php"/>
+    </interface>
+    <class name="CacheFactory">
+      <efferent>
+        <type namespace="PDepend\Util" name="Configuration"/>
+        <type namespace="" name="InvalidArgumentException"/>
+        <type namespace="PDepend\Util\Cache\Driver" name="FileCacheDriver"/>
+        <type namespace="PDepend\Util\Cache\Driver" name="MemoryCacheDriver"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/CacheFactory.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Util\Cache\Driver\File">
+    <class name="FileCacheDirectory">
+      <efferent>
+        <type namespace="" name="DirectoryIterator"/>
+        <type namespace="" name="SplFileInfo"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Cache\Driver" name="FileCacheDriver"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/Driver/File/FileCacheDirectory.php"/>
+    </class>
+    <class name="FileCacheGarbageCollector">
+      <efferent>
+        <type namespace="" name="RecursiveIteratorIterator"/>
+        <type namespace="" name="RecursiveDirectoryIterator"/>
+        <type namespace="" name="UnexpectedValueException"/>
+        <type namespace="" name="SplFileInfo"/>
+        <type namespace="PDepend\Util" name="Log"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Cache\Driver" name="FileCacheDriver"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/Driver/File/FileCacheGarbageCollector.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Util\Cache\Driver">
+    <class name="FileCacheDriver">
+      <efferent>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+        <type namespace="PDepend\Util\Cache\Driver\File" name="FileCacheDirectory"/>
+        <type namespace="PDepend\Util\Cache\Driver\File" name="FileCacheGarbageCollector"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Cache" name="CacheFactory"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/Driver/FileCacheDriver.php"/>
+    </class>
+    <class name="MemoryCacheDriver">
+      <efferent>
+        <type namespace="PDepend\Util\Cache" name="CacheDriver"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Cache" name="CacheFactory"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Cache/Driver/MemoryCacheDriver.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Util">
+    <class name="Configuration">
+      <efferent>
+        <type namespace="" name="stdClass"/>
+        <type namespace="" name="OutOfRangeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend" name="Engine"/>
+        <type namespace="PDepend\Util\Cache" name="CacheFactory"/>
+        <type namespace="PDepend\Util" name="ConfigurationInstance"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Configuration.php"/>
+    </class>
+    <class name="ConfigurationInstance">
+      <efferent>
+        <type namespace="PDepend\Util" name="Configuration"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\TextUI" name="Command"/>
+        <type namespace="PDepend\Util" name="ImageConvert"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/ConfigurationInstance.php"/>
+    </class>
+    <class name="FileUtil">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\DependencyInjection" name="Configuration"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/FileUtil.php"/>
+    </class>
+    <class name="IdBuilder">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="ASTCompilationUnit"/>
+        <type namespace="PDepend\Source\AST" name="ASTFunction"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTType"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+        <type namespace="PDepend\Source\AST" name="ASTMethod"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/IdBuilder.php"/>
+    </class>
+    <class name="ImageConvert">
+      <efferent>
+        <type namespace="" name="Imagick"/>
+        <type namespace="PDepend\Util" name="ConfigurationInstance"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Overview" name="Pyramid"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/ImageConvert.php"/>
+    </class>
+    <class name="Log">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+        <type namespace="PDepend\TextUI" name="Command"/>
+        <type namespace="PDepend\Util\Cache\Driver\File" name="FileCacheGarbageCollector"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Log.php"/>
+    </class>
+    <class name="MathUtil">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="NPathComplexityAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/MathUtil.php"/>
+    </class>
+    <class name="Type">
+      <efferent>
+        <type namespace="" name="ReflectionExtension"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Source\Language\PHP" name="AbstractPHPParser"/>
+        <type namespace="PDepend\Source\Language\PHP" name="PHPBuilder"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Type.php"/>
+    </class>
+    <class name="Utf8Util">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\Report\Dependencies" name="Xml"/>
+        <type namespace="PDepend\Report\Jdepend" name="Chart"/>
+        <type namespace="PDepend\Report\Jdepend" name="Xml"/>
+        <type namespace="PDepend\Report\Summary" name="Xml"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Utf8Util.php"/>
+    </class>
+    <class name="Workarounds">
+      <efferent/>
+      <afferent>
+        <type namespace="PDepend\DependencyInjection" name="Configuration"/>
+        <type namespace="PDepend\TextUI" name="Command"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Workarounds.php"/>
+    </class>
+  </package>
+  <package name="PDepend\Util\Coverage">
+    <class name="CloverReport">
+      <efferent>
+        <type namespace="PDepend\Util\Coverage" name="Report"/>
+        <type namespace="" name="SimpleXMLElement"/>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Coverage" name="Factory"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Coverage/CloverReport.php"/>
+    </class>
+    <class name="Factory">
+      <efferent>
+        <type namespace="PDepend\Util\Coverage" name="CloverReport"/>
+        <type namespace="" name="RuntimeException"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Metrics\Analyzer" name="CrapIndexAnalyzer"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Coverage/Factory.php"/>
+    </class>
+    <interface name="Report">
+      <efferent>
+        <type namespace="PDepend\Source\AST" name="AbstractASTArtifact"/>
+      </efferent>
+      <afferent>
+        <type namespace="PDepend\Util\Coverage" name="CloverReport"/>
+      </afferent>
+      <file name="/Volumes/Data/Work/Personal/Academic/Repos/PDepend/src/main/php/PDepend/Util/Coverage/Report.php"/>
+    </interface>
+  </package>
+</dependencies>
