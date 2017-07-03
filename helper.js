@@ -31,3 +31,61 @@ exports.saveToFile = function (data, cb) {
         }
     });
 }
+
+//Read file for git diff.
+exports.readFile = function (inputFile, cb) {
+    if (inputFile) {
+        fs.readFile(inputFile, function (error, fileContent) {
+            if (error) {
+                cb(error);
+            } else {
+                var diffs = fileContent.toString().split('\n');
+                cb(null, diffs);
+            }
+        });
+    } else {
+        cb(true);
+    }
+}
+
+//Process diff comparison
+exports.processDiff = function (data, config, cb) {
+
+    if (data.length > 0) {
+        var output = {};
+        data.forEach(function (diffLine) {
+
+            var diffContent = diffLine.toString().split('|');
+
+            if (diffContent.length == 2) {
+
+                var _file = (diffContent[0]).trim().toString();
+                var _change = (diffContent[1]).trim().toString();
+                var _count = (diffContent[1]).trim().replace(/\D+/g, '');
+                
+                if (_change.indexOf('->') >= 0) {
+                    if(config.needFileChange == true){
+                        output[_file] = {};
+                        output[_file].changes = 1;
+                    }
+                } else if (_change.indexOf('+-') >= 0) {
+                    output[_file] = {};
+                    output[_file].changes = _count;
+                } else if (_change.indexOf('+') >= 0) {
+                    output[_file] = {};
+                    output[_file].insertions = _count;
+                } else if (_change.indexOf('-') >= 0) {
+                    output[_file] = {};
+                    output[_file].deletions = _count;
+                } else {
+                    output[_file] = {};
+                    output[_file].changes = _count;
+                }
+
+            }
+        })
+        cb(null, output);
+    } else {
+        cb(true);
+    }
+}
