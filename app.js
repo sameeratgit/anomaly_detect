@@ -2,11 +2,25 @@ var core = require("./core.js");
 var helper = require("./helper.js");
 var async = require("async");
 
+var express = require('express');
+var serveStatic = require('serve-static');
+
+var app = express();
+
 //XML Output from PHPDepend
 var xmlFilePath = 'pdepend_dep.xml';
 
+//Output File Path
+var outputPath = './public/data';
+
 //Output file name
-var outputFile = 'output.json';
+var outputFile = './public/data/output.json';
+
+app.use(serveStatic('public', {
+    'index': ['default.html', 'default.htm', 'view.html']
+}));
+app.use(serveStatic('public/assets'));
+app.use(serveStatic('public/data'));
 
 //Process Queue
 var queue = async.queue(function (data, callback) {
@@ -17,11 +31,13 @@ var queue = async.queue(function (data, callback) {
     var _basePackage = packageClassListItem.packageName;
     var _baseClass = packageClassListItem.className;
 
-    var _output = {};
+    var _output_class = {};
+    var _output_pkg = {};
 
-    var _baseName = _basePackage + ':' + _baseClass;
+    var _baseName_class = _basePackage + ':' + _baseClass;
 
-    _output[_baseName] = {};
+    _output_class[_baseName_class] = {};
+    _output_pkg[_basePackage] = {};
 
     packageData.forEach(function (packageItem) {
 
@@ -36,7 +52,8 @@ var queue = async.queue(function (data, callback) {
                 var className = classItem.$.name;
                 var _currentName = packageName + ':' + className;
 
-                _output[_baseName][_currentName] = {};
+                _output_class[_baseName_class][_currentName] = {};
+                _output_pkg[_basePackage][packageName] = {};
 
                 var efferentTypes = classItem.efferent[0].type;
                 if (efferentTypes) {
@@ -44,7 +61,8 @@ var queue = async.queue(function (data, callback) {
                         var _effNamespace = efferentTypeItem.$.namespace;
                         var _effName = efferentTypeItem.$.name;
                         if (_basePackage == _effNamespace && _baseClass == _effName) {
-                            _output[_baseName][_currentName].efferent = 1;
+                            _output_class[_baseName_class][_currentName].efferent = 1;
+                            _output_pkg[_basePackage][packageName].efferent = _output_pkg[_basePackage][packageName].efferent ? _output_pkg[_basePackage][packageName].efferent + 1 : 1;
                         }
                     });
                 }
@@ -55,7 +73,8 @@ var queue = async.queue(function (data, callback) {
                         var _affNamespace = afferentTypeItem.$.namespace;
                         var _affName = afferentTypeItem.$.name;
                         if (_basePackage == _affNamespace && _baseClass == _affName) {
-                            _output[_baseName][_currentName].afferent = 1;
+                            _output_class[_baseName_class].afferent = 1;
+                            _output_pkg[_basePackage][packageName].afferent = _output_pkg[_basePackage][packageName].afferent ? _output_pkg[_basePackage][packageName].afferent + 1 : 1;
                         }
                     });
                 }
@@ -71,7 +90,8 @@ var queue = async.queue(function (data, callback) {
                 var className = classItem.$.name;
                 var _currentName = packageName + ':' + className;
 
-                _output[_baseName][_currentName] = {};
+                _output_class[_baseName_class][_currentName] = {};
+                _output_pkg[_basePackage][packageName] = {};
 
                 var efferentTypes = classItem.efferent[0].type;
                 if (efferentTypes) {
@@ -79,7 +99,9 @@ var queue = async.queue(function (data, callback) {
                         var _effNamespace = efferentTypeItem.$.namespace;
                         var _effName = efferentTypeItem.$.name;
                         if (_basePackage == _effNamespace && _baseClass == _effName) {
-                            _output[_baseName][_currentName].efferent = 1;
+                            _output_class[_baseName_class][_currentName].efferent = 1;
+                            _output_pkg[_basePackage][packageName].efferent = _output_pkg[_basePackage][packageName].efferent ? _output_pkg[_basePackage][packageName].efferent + 1 : 1;
+
                         }
                     });
                 }
@@ -90,7 +112,9 @@ var queue = async.queue(function (data, callback) {
                         var _affNamespace = afferentTypeItem.$.namespace;
                         var _affName = afferentTypeItem.$.name;
                         if (_basePackage == _affNamespace && _baseClass == _affName) {
-                            _output[_baseName][_currentName].afferent = 1;
+                            _output_class[_baseName_class][_currentName].afferent = 1;
+                            _output_pkg[_basePackage][packageName].afferent = _output_pkg[_basePackage][packageName].afferent ? _output_pkg[_basePackage][packageName].afferent + 1 : 1;
+
                         }
                     });
                 }
@@ -98,6 +122,7 @@ var queue = async.queue(function (data, callback) {
         }
 
     });
+    var _output = _output_pkg;
 
     callback(null, _output);
 }, 10);
@@ -109,14 +134,14 @@ queue.drain = function () {
     var data = {
         outputFile: outputFile,
         output: output
-    }
+    };
 
-    helper.saveToFile(data, function (error, data) {
+    helper.saveToFile(data, function (error, status) {
         if (error) {
             console.log(error);
         } else {
             console.log("Processing completed");
-            console.log("Output saved to " + outputFile);
+            console.log("Output saved to " + data.outputFile);
         }
     });
 };
@@ -188,3 +213,5 @@ core.getPackageData(xmlFilePath, function (error, packageData) {
         });
     }
 });
+
+app.listen(3000);

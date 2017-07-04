@@ -1,12 +1,14 @@
 {
-  "name": "Anomaly Detection",
+  "name": "Anomaly-Detection",
   "private": true,
   "version": "1.0.0",
   "description": "description",
   "keywords": [],
   "dependencies": {
     "async": "^2.4.1",
+    "express": "^4.15.3",
     "fs": "0.0.1-security",
+    "serve-static": "^1.12.3",
     "xml2js": "^0.4.17"
   },
   "scripts": {
