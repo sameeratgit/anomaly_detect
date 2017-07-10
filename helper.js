@@ -1,5 +1,6 @@
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
+var async = require('async');
 var path = require('path');
 
 //Parsing XML to JSON
@@ -48,6 +49,74 @@ exports.readFile = function (inputFile, cb) {
     }
 }
 
+exports.comparePackageChanges = function(data, cb){
+    var me = this;
+
+    var packageKeys = {};
+
+    async.parallel({
+        one: function (callback) {
+            me.readFile(data.inputFileOne, function (error, response) {
+                if (error) {
+                    callback(true);
+                } else {
+                    response = JSON.parse(response);
+                    callback(null, response);
+                }
+            });
+            
+        },
+        two: function (callback) {
+            me.readFile(data.inputFileTwo, function (error, response) {
+                if (error) {
+                    callback(true);
+                } else {
+                    response = JSON.parse(response);
+                    callback(null, response);
+                }
+            });
+            
+        },
+    }, function (error, results) {
+        if(error){
+            console.log(error);
+        } else {
+            var packages = results.one;
+            var codes = results.two;
+
+            for(var package in packages){            
+                for(var packageKey in packages[package]){                
+
+                    var tempComparePackageKey = packageKey.replace(/\\/gi, '');
+
+                    for(var code in codes){
+                        var tempCodeKey = code.replace(/\\/gi, '');
+
+                        if(tempCodeKey.indexOf(tempComparePackageKey) >= 0){
+
+                            if(typeof packageKeys[packageKey] === 'undefined'){
+                                packageKeys[packageKey] = {};
+                                packageKeys[packageKey].changes = 0;
+                            }
+
+                            var _tempValue = parseInt((packageKeys[packageKey]).changes);
+                            var _tempCurrentCodeValue = parseInt((codes[code]).changes);
+
+                            if(_tempCurrentCodeValue){
+                                _tempValue = _tempValue + _tempCurrentCodeValue;    
+                            }
+
+                            packageKeys[packageKey].changes = _tempValue;
+
+                        }
+                    }                
+                }            
+            } 
+            cb('',packageKeys);
+        }
+    })
+}
+
 //Process diff comparison
 exports.processDiff = function (data, config, cb) {
 
@@ -59,7 +128,8 @@ exports.processDiff = function (data, config, cb) {
 
             if (diffContent.length == 2) {
 
-                var _file = (diffContent[0]).trim().toString();
+                //var _file = (diffContent[0]).trim().toString();                
+                var _file = ((diffContent[0]).trim().toString()).replace(/(\/)/g,'\\');
                 var _change = (diffContent[1]).trim().toString();
                 var _count = (diffContent[1]).trim().replace(/\D+/g, '');
                 
@@ -73,10 +143,12 @@ exports.processDiff = function (data, config, cb) {
                     output[_file].changes = _count;
                 } else if (_change.indexOf('+') >= 0) {
                     output[_file] = {};
-                    output[_file].insertions = _count;
+                    //output[_file].insertions = _count;
+                    output[_file].changes = _count;
                 } else if (_change.indexOf('-') >= 0) {
                     output[_file] = {};
-                    output[_file].deletions = _count;
+                    //output[_file].deletions = _count;
+                    output[_file].changes = _count;
                 } else {
                     output[_file] = {};
                     output[_file].changes = _count;
