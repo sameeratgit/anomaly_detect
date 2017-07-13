@@ -49,24 +49,14 @@ exports.readFile = function (inputFile, cb) {
     }
 }
 
-exports.comparePackageChanges = function(data, cb){
+exports.comparePackageChanges = function (data, cb) {
     var me = this;
 
     var packageKeys = {};
+    var foldersToExempt = ['...'];
 
-    async.parallel({
+    async.parallel({        
         one: function (callback) {
-            me.readFile(data.inputFileOne, function (error, response) {
-                if (error) {
-                    callback(true);
-                } else {
-                    response = JSON.parse(response);
-                    callback(null, response);
-                }
-            });
-            
-        },
-        two: function (callback) {
             me.readFile(data.inputFileTwo, function (error, response) {
                 if (error) {
                     callback(true);
@@ -75,15 +65,54 @@ exports.comparePackageChanges = function(data, cb){
                     callback(null, response);
                 }
             });
-            
         },
     }, function (error, results) {
-        if(error){
+        if (error) {
             console.log(error);
-        } else {
-            var packages = results.one;
-            var codes = results.two;
+        } else {            
+            var codes = results.one;
 
+            for (var code in codes) {
+
+                var _splittedFile = code.split(/[\\\\$]/);
+                
+                if (_splittedFile.length > 1) {
+                    var _fileName = _splittedFile[(_splittedFile.length) - 1];
+                    _splittedFile.pop();
+                    
+                    //Ignore unwanted folders from prefix.
+                    foldersToExempt.forEach(function(_folderExempt){                        
+                        _splittedFile = _splittedFile.filter(function(item) { 
+                            return item !== _folderExempt
+                        })   
+                    })                    
+
+                    var _className = _splittedFile.join("\\");                    
+
+                } else {
+                    var _fileName = code;
+                    var _className = '\\';
+                }
+                
+                if (typeof packageKeys[_className] === "undefined") {
+                    packageKeys[_className] = {};   
+                    packageKeys[_className].changes = 0;                 
+                    packageKeys[_className].classes= [];
+                }
+
+                if(typeof codes[code].changes !== "undefined" && parseInt(codes[code].changes) > 0){
+                    packageKeys[_className].changes += parseInt(codes[code].changes);
+                }
+
+                packageKeys[_className].classes.push({
+                    file: _fileName,
+                    changes: parseInt(codes[code].changes)
+                });         
+
+            }
+            
+            cb('',packageKeys);
+            /*
             for(var package in packages){            
                 for(var packageKey in packages[package]){                
 
@@ -112,7 +141,8 @@ exports.comparePackageChanges = function(data, cb){
                     }                
                 }            
             } 
-            cb('',packageKeys);
+            
+            */
         }
     })
 }
@@ -129,12 +159,12 @@ exports.processDiff = function (data, config, cb) {
             if (diffContent.length == 2) {
 
                 //var _file = (diffContent[0]).trim().toString();                
-                var _file = ((diffContent[0]).trim().toString()).replace(/(\/)/g,'\\');
+                var _file = ((diffContent[0]).trim().toString()).replace(/(\/)/g, '\\');
                 var _change = (diffContent[1]).trim().toString();
                 var _count = (diffContent[1]).trim().replace(/\D+/g, '');
-                
+
                 if (_change.indexOf('->') >= 0) {
-                    if(config.needFileChange == true){
+                    if (config.needFileChange == true) {
                         output[_file] = {};
                         output[_file].changes = 1;
                     }
