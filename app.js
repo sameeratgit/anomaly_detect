@@ -3,14 +3,15 @@ var helper = require("./helper.js");
 var inputFileOne = 'output.json';
 var inputFileTwo = 'git-diff-sample-output.json';
 var outputFile = 'file-changes.json';
-
+var prefixToIgnore = ['...','src','main'];
 /**
  * It all starts here.
  */
 
 var data = {
     inputFileOne: inputFileOne,
-    inputFileTwo: inputFileTwo
+    inputFileTwo: inputFileTwo,
+    prefixToIgnore: prefixToIgnore
 }
 
 helper.comparePackageChanges(data, function (error, response) {    

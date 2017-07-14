@@ -53,9 +53,9 @@ exports.comparePackageChanges = function (data, cb) {
     var me = this;
 
     var packageKeys = {};
-    var foldersToExempt = ['...'];
+    var foldersToExempt = ['...', 'src', 'main'];
 
-    async.parallel({        
+    async.parallel({
         one: function (callback) {
             me.readFile(data.inputFileTwo, function (error, response) {
                 if (error) {
@@ -69,49 +69,54 @@ exports.comparePackageChanges = function (data, cb) {
     }, function (error, results) {
         if (error) {
             console.log(error);
-        } else {            
+        } else {
             var codes = results.one;
 
             for (var code in codes) {
 
                 var _splittedFile = code.split(/[\\\\$]/);
-                
+
                 if (_splittedFile.length > 1) {
                     var _fileName = _splittedFile[(_splittedFile.length) - 1];
                     _splittedFile.pop();
-                    
-                    //Ignore unwanted folders from prefix.
-                    foldersToExempt.forEach(function(_folderExempt){                        
-                        _splittedFile = _splittedFile.filter(function(item) { 
-                            return item !== _folderExempt
-                        })   
-                    })                    
 
-                    var _className = _splittedFile.join("\\");                    
+                    //Ignore unwanted folders from prefix.
+                    if(data.prefixToIgnore.length > 0){
+                        data.prefixToIgnore.forEach(function (_folderExempt) {
+                            _splittedFile = _splittedFile.filter(function (item) {
+                                return item !== _folderExempt
+                            })
+                        })
+                    }
+
+                    var _className = _splittedFile.join("\\");
 
                 } else {
                     var _fileName = code;
                     var _className = '\\';
                 }
-                
-                if (typeof packageKeys[_className] === "undefined") {
-                    packageKeys[_className] = {};   
-                    packageKeys[_className].changes = 0;                 
-                    packageKeys[_className].classes= [];
-                }
 
-                if(typeof codes[code].changes !== "undefined" && parseInt(codes[code].changes) > 0){
-                    packageKeys[_className].changes += parseInt(codes[code].changes);
-                }
+                //Accept keys with alpha character
+                if (_className.match(/[a-z]/i)) {
+                    if (typeof packageKeys[_className] === "undefined") {
+                        packageKeys[_className] = {};
+                        packageKeys[_className].changes = 0;
+                        packageKeys[_className].classes = [];
+                    }
 
-                packageKeys[_className].classes.push({
-                    file: _fileName,
-                    changes: parseInt(codes[code].changes)
-                });         
+                    if (typeof codes[code].changes !== "undefined" && parseInt(codes[code].changes) > 0) {
+                        packageKeys[_className].changes += parseInt(codes[code].changes);
+                    }
+
+                    packageKeys[_className].classes.push({
+                        file: _fileName,
+                        changes: parseInt(codes[code].changes)
+                    });
+                }
 
             }
-            
-            cb('',packageKeys);
+
+            cb('', packageKeys);
             /*
             for(var package in packages){            
                 for(var packageKey in packages[package]){                
