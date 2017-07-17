@@ -1,0 +1,70 @@
+<html>
+<head>
+<script src="assets/jquery-1.12.4.min.js"></script> 
+<style>
+body * {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+th,td:first-child {
+    font-weight: bold;
+}
+
+td{
+border: 1px solid #eee;
+}
+
+th.rotate {
+  height: 300px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform: 
+    translate(16px, 130px)
+    rotate(315deg);
+  width: 30px;
+}
+th.rotate > div > span {
+  border-bottom: 2px solid #eee;  
+  padding: 5px 10px;
+}
+
+tr:hover td {
+    background: #c7d4dd !important;
+}
+</style>		
+</head>
+<body>
+    
+    <div id="data"></div>
+<script type="text/javascript">
+$(document).ready(function(){ 
+
+    $.ajax({url: "file-changes.json", success: function(result){
+        
+        var data = eval(result);	
+
+		
+        content = '<table cellpadding="0" cellspacing="0">';
+        content += "<thead>";
+        content += "<th>#</th>";
+		content += '<th>Class</th>'; 
+		content += '<th>No. of Changes</th>'; 
+		content += "</thead>";
+		
+		content += "<tbody>";
+		var i=1;
+        $.each(data,function(index, value){                      
+			content += '<tr><td>'+(i++)+'</td><td>'+index+'</td><td>'+value.changes+'</td></tr>';                                                    
+        });
+		content += "</tbody>";               
+
+        content += "</table>";
+
+        $("#data").html(content);
+    }});
+});
+</script>
+</body>
+</html>

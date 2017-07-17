@@ -2,8 +2,11 @@ var fs = require("fs");
 var helper = require("./helper.js");
 var inputFileOne = 'output.json';
 var inputFileTwo = 'git-diff-sample-output.json';
+
 var outputFile = 'file-changes.json';
-var prefixToIgnore = ['...','src','main'];
+
+var prefixToIgnore = ['...','src','main','php'];
+
 /**
  * It all starts here.
  */

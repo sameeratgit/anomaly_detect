@@ -57,7 +57,7 @@ exports.comparePackageChanges = function (data, cb) {
 
     async.parallel({
         one: function (callback) {
-            me.readFile(data.inputFileTwo, function (error, response) {
+            me.readFile(data.inputFileOne, function (error, response) {
                 if (error) {
                     callback(true);
                 } else {
@@ -66,11 +66,22 @@ exports.comparePackageChanges = function (data, cb) {
                 }
             });
         },
+        two: function (callback) {
+            me.readFile(data.inputFileTwo, function (error, response) {
+                if (error) {
+                    callback(true);
+                } else {
+                    response = JSON.parse(response);
+                    callback(null, response);
+                }
+            });
+        }
     }, function (error, results) {
         if (error) {
             console.log(error);
         } else {
-            var codes = results.one;
+            var comps = results.one; //output
+            var codes = results.two; //git diff
 
             for (var code in codes) {
 
@@ -96,7 +107,7 @@ exports.comparePackageChanges = function (data, cb) {
                     var _className = '\\';
                 }
 
-                //Accept keys with alpha character
+                //Accept all keys with alpha character and ignore non alpha keys
                 if (_className.match(/[a-z]/i)) {
                     if (typeof packageKeys[_className] === "undefined") {
                         packageKeys[_className] = {};
@@ -116,38 +127,26 @@ exports.comparePackageChanges = function (data, cb) {
 
             }
 
-            cb('', packageKeys);
-            /*
-            for(var package in packages){            
-                for(var packageKey in packages[package]){                
+            var _output = {};
 
-                    var tempComparePackageKey = packageKey.replace(/\\/gi, '');
+            for(var comp in comps){            
+                for(var compKey in comps[comp]){                
 
-                    for(var code in codes){
-                        var tempCodeKey = code.replace(/\\/gi, '');
+                    var tempComparePackageKey = compKey.replace(/\\/gi, '');
 
-                        if(tempCodeKey.indexOf(tempComparePackageKey) >= 0){
+                    for(var packageKey in packageKeys){
+                        var tempCodeKey = packageKey.replace(/\\/gi, '');                        
 
-                            if(typeof packageKeys[packageKey] === 'undefined'){
-                                packageKeys[packageKey] = {};
-                                packageKeys[packageKey].changes = 0;
-                            }
-
-                            var _tempValue = parseInt((packageKeys[packageKey]).changes);
-                            var _tempCurrentCodeValue = parseInt((codes[code]).changes);
-
-                            if(_tempCurrentCodeValue){
-                                _tempValue = _tempValue + _tempCurrentCodeValue;    
-                            }
-
-                            packageKeys[packageKey].changes = _tempValue;
-
-                        }
+                        //if(tempCodeKey.indexOf(tempComparePackageKey) >= 0){
+                        if(tempCodeKey == tempComparePackageKey){
+                            _output[compKey] = {};
+                            _output[compKey].changes = parseInt((packageKeys[packageKey]).changes);
+                        }                        
                     }                
                 }            
-            } 
-            
-            */
+            }             
+
+            cb(null, _output);            
         }
     })
 }
