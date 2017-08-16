@@ -1,0 +1,349 @@
+[{
+    "accounting": {
+        "+global": {
+            "fileName": "/lib/shipping/shippinglib.php"
+        },
+        "accounting": {
+            "fileName": "/lib/accounting/accountinglib.php"
+        },
+        "Tiki\\Blogs": {
+            "fileName": "/lib/blogs/bloglib.php"
+        },
+        "H5P": {
+            "fileName": "/lib/core/H5P/Event.php"
+        },
+        "Tiki\\Reports": {
+            "fileName": "/lib/core/Reports/Users.php"
+        },
+        "Scheduler\\Exception": {
+            "fileName": "/lib/core/Scheduler/Exception/Exception.php"
+        },
+        "Search\\Federated": {
+            "fileName": "/lib/core/Search/Federated/IndexInterface.php"
+        },
+        "Search\\ResultSet": {
+            "fileName": "/lib/core/Search/ResultSet/UrlHighlightTermsTransform.php"
+        },
+        "Tiki\\Table": {
+            "fileName": "/lib/core/Table/Totals.php"
+        },
+        "Tiki\\BigBlueButton": {
+            "fileName": "/lib/core/Tiki/BigBlueButton/Configuration.php"
+        },
+        "Tiki\\Command": {
+            "fileName": "/lib/core/Tiki/Command/UsersPasswordCommand.php"
+        },
+        "Tiki\\Command\\ProfileExport": {
+            "fileName": "/lib/core/Tiki/Command/ProfileExport/WikiPage.php"
+        },
+        "Tiki\\Composer": {
+            "fileName": "/lib/core/Tiki/Composer/ThemeInstaller.php"
+        },
+        "Tiki\\FileGallery": {
+            "fileName": "/lib/core/Tiki/FileGallery/File.php"
+        },
+        "Tiki\\FileGallery\\FileWrapper": {
+            "fileName": "/lib/core/Tiki/FileGallery/FileWrapper/WrapperInterface.php"
+        },
+        "Tiki\\FileGallery\\Handler": {
+            "fileName": "/lib/core/Tiki/FileGallery/Handler/HandlerInterface.php"
+        },
+        "Tiki\\MailIn": {
+            "fileName": "/lib/core/Tiki/MailIn/Account.php"
+        },
+        "Tiki\\MailIn\\Action": {
+            "fileName": "/lib/core/Tiki/MailIn/Action/FactoryInterface.php"
+        },
+        "Tiki\\MailIn\\Exception": {
+            "fileName": "/lib/core/Tiki/MailIn/Exception/TransportException.php"
+        },
+        "Tiki\\MailIn\\Provider": {
+            "fileName": "/lib/core/Tiki/MailIn/Provider/ProviderInterface.php"
+        },
+        "Tiki\\MailIn\\Source": {
+            "fileName": "/lib/core/Tiki/MailIn/Source/SourceInterface.php"
+        },
+        "Tiki\\Object": {
+            "fileName": "/lib/core/Tiki/Object/SelectorItem.php"
+        },
+        "Tiki\\Package": {
+            "fileName": "/lib/core/Tiki/Package/ComposerPackage.php"
+        },
+        "Tiki\\Recommendation": {
+            "fileName": "/lib/core/Tiki/Recommendation/EngineOutput.php"
+        },
+        "Tiki\\Recommendation\\Debug": {
+            "fileName": "/lib/core/Tiki/Recommendation/Debug/SourceDocument.php"
+        },
+        "Tiki\\Recommendation\\Engine": {
+            "fileName": "/lib/core/Tiki/Recommendation/Engine/EngineInterface.php"
+        },
+        "Tiki\\Recommendation\\Input": {
+            "fileName": "/lib/core/Tiki/Recommendation/Input/UserInput.php"
+        },
+        "Tiki\\Recommendation\\Store": {
+            "fileName": "/lib/core/Tiki/Recommendation/Store/StoreInterface.php"
+        },
+        "Tiki\\Wiki": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager.php"
+        },
+        "Tiki\\Wiki\\SlugManager": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager/Generator.php"
+        },
+        "Tracker": {
+            "fileName": "/lib/core/Tracker/CompilerPass.php"
+        },
+        "Tracker\\Filter": {
+            "fileName": "/lib/core/Tracker/Filter/Filter.php"
+        },
+        "Tracker\\Filter\\Control": {
+            "fileName": "/lib/core/Tracker/Filter/Control/Control.php"
+        },
+        "Tracker\\Filter\\Exception": {
+            "fileName": "/lib/core/Tracker/Filter/Exception/ModeNotSupported.php"
+        },
+        "Tiki\\Trackers": {
+            "fileName": "/lib/core/Tracker/Query.php"
+        },
+        "Tracker\\Tabular\\Exception": {
+            "fileName": "/lib/core/Tracker/Tabular/Exception/ModeNotSupported.php"
+        },
+        "Tracker\\Tabular": {
+            "fileName": "/lib/core/Tracker/Tabular/Schema.php"
+        },
+        "Tracker\\Tabular\\Schema": {
+            "fileName": "/lib/core/Tracker/Tabular/Schema/DateHelper.php"
+        },
+        "Tracker\\Tabular\\Source": {
+            "fileName": "/lib/core/Tracker/Tabular/Source/SourceInterface.php"
+        },
+        "Tracker\\Tabular\\Writer": {
+            "fileName": "/lib/core/Tracker/Tabular/Writer/TrackerWriter.php"
+        },
+        "tikiwiki": {
+            "fileName": "/lib/crypt/cryptlib.php"
+        },
+        "Tiki\\db": {
+            "fileName": "/lib/db/tiki_registration_fields.php"
+        },
+        "Text_Diff": {
+            "fileName": "/lib/diff/renderer_unified.php"
+        },
+        "latexrender": {
+            "fileName": "/lib/equation/class.latexrender.php"
+        },
+        "File": {
+            "fileName": "/lib/ical/File.php"
+        },
+        "iCal": {
+            "fileName": "/lib/ical/iCal/iCalendar.php"
+        },
+        "tikiimporter": {
+            "fileName": "/lib/importer/tikiimporter_wiki_mediawiki.php"
+        },
+        "TikiWiki\\lib\\init": {
+            "fileName": "/lib/init/smarty.php"
+        },
+        "Tiki\\Language": {
+            "fileName": "/lib/language/WriteFile.php"
+        },
+        "Tiki\\Parser": {
+            "fileName": "/lib/parser/parserlib.php"
+        },
+        "Spreadsheet_Excel_Writer": {
+            "fileName": "/lib/sheet/excel/writer/worksheet.php"
+        },
+        "core": {
+            "fileName": "/lib/sheet/include/core/APIClassRegistry.php"
+        },
+        "OLE": {
+            "fileName": "/lib/sheet/ole/pps/root.php"
+        },
+        "Test\\ObjectSelector": {
+            "fileName": "/lib/test/core/ObjectSelector/ObjectSelectorTest.php"
+        },
+        "Test\\Wiki": {
+            "fileName": "/lib/test/core/Wiki/SlugManagerTest.php"
+        },
+        "Mail": {
+            "fileName": "/lib/webmail/mimeDecode.php"
+        },
+        "Tiki\\Plugins": {
+            "fileName": "/lib/wiki/pluginslib.php"
+        }
+    }
+}, {
+    "Tiki\\Blogs": {
+        "+global": {
+            "fileName": "/lib/shipping/shippinglib.php"
+        },
+        "accounting": {
+            "fileName": "/lib/accounting/accountinglib.php"
+        },
+        "Tiki\\Blogs": {
+            "fileName": "/lib/blogs/bloglib.php"
+        },
+        "H5P": {
+            "fileName": "/lib/core/H5P/Event.php"
+        },
+        "Tiki\\Reports": {
+            "fileName": "/lib/core/Reports/Users.php"
+        },
+        "Scheduler\\Exception": {
+            "fileName": "/lib/core/Scheduler/Exception/Exception.php"
+        },
+        "Search\\Federated": {
+            "fileName": "/lib/core/Search/Federated/IndexInterface.php"
+        },
+        "Search\\ResultSet": {
+            "fileName": "/lib/core/Search/ResultSet/UrlHighlightTermsTransform.php"
+        },
+        "Tiki\\Table": {
+            "fileName": "/lib/core/Table/Totals.php"
+        },
+        "Tiki\\BigBlueButton": {
+            "fileName": "/lib/core/Tiki/BigBlueButton/Configuration.php"
+        },
+        "Tiki\\Command": {
+            "fileName": "/lib/core/Tiki/Command/UsersPasswordCommand.php"
+        },
+        "Tiki\\Command\\ProfileExport": {
+            "fileName": "/lib/core/Tiki/Command/ProfileExport/WikiPage.php"
+        },
+        "Tiki\\Composer": {
+            "fileName": "/lib/core/Tiki/Composer/ThemeInstaller.php"
+        },
+        "Tiki\\FileGallery": {
+            "fileName": "/lib/core/Tiki/FileGallery/File.php"
+        },
+        "Tiki\\FileGallery\\FileWrapper": {
+            "fileName": "/lib/core/Tiki/FileGallery/FileWrapper/WrapperInterface.php"
+        },
+        "Tiki\\FileGallery\\Handler": {
+            "fileName": "/lib/core/Tiki/FileGallery/Handler/HandlerInterface.php"
+        },
+        "Tiki\\MailIn": {
+            "fileName": "/lib/core/Tiki/MailIn/Account.php"
+        },
+        "Tiki\\MailIn\\Action": {
+            "fileName": "/lib/core/Tiki/MailIn/Action/FactoryInterface.php"
+        },
+        "Tiki\\MailIn\\Exception": {
+            "fileName": "/lib/core/Tiki/MailIn/Exception/TransportException.php"
+        },
+        "Tiki\\MailIn\\Provider": {
+            "fileName": "/lib/core/Tiki/MailIn/Provider/ProviderInterface.php"
+        },
+        "Tiki\\MailIn\\Source": {
+            "fileName": "/lib/core/Tiki/MailIn/Source/SourceInterface.php"
+        },
+        "Tiki\\Object": {
+            "fileName": "/lib/core/Tiki/Object/SelectorItem.php"
+        },
+        "Tiki\\Package": {
+            "fileName": "/lib/core/Tiki/Package/ComposerPackage.php"
+        },
+        "Tiki\\Recommendation": {
+            "fileName": "/lib/core/Tiki/Recommendation/EngineOutput.php"
+        },
+        "Tiki\\Recommendation\\Debug": {
+            "fileName": "/lib/core/Tiki/Recommendation/Debug/SourceDocument.php"
+        },
+        "Tiki\\Recommendation\\Engine": {
+            "fileName": "/lib/core/Tiki/Recommendation/Engine/EngineInterface.php"
+        },
+        "Tiki\\Recommendation\\Input": {
+            "fileName": "/lib/core/Tiki/Recommendation/Input/UserInput.php"
+        },
+        "Tiki\\Recommendation\\Store": {
+            "fileName": "/lib/core/Tiki/Recommendation/Store/StoreInterface.php"
+        },
+        "Tiki\\Wiki": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager.php"
+        },
+        "Tiki\\Wiki\\SlugManager": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager/Generator.php"
+        },
+        "Tracker": {
+            "fileName": "/lib/core/Tracker/CompilerPass.php"
+        },
+        "Tracker\\Filter": {
+            "fileName": "/lib/core/Tracker/Filter/Filter.php"
+        },
+        "Tracker\\Filter\\Control": {
+            "fileName": "/lib/core/Tracker/Filter/Control/Control.php"
+        },
+        "Tracker\\Filter\\Exception": {
+            "fileName": "/lib/core/Tracker/Filter/Exception/ModeNotSupported.php"
+        },
+        "Tiki\\Trackers": {
+            "fileName": "/lib/core/Tracker/Query.php"
+        },
+        "Tracker\\Tabular\\Exception": {
+            "fileName": "/lib/core/Tracker/Tabular/Exception/ModeNotSupported.php"
+        },
+        "Tracker\\Tabular": {
+            "fileName": "/lib/core/Tracker/Tabular/Schema.php"
+        },
+        "Tracker\\Tabular\\Schema": {
+            "fileName": "/lib/core/Tracker/Tabular/Schema/DateHelper.php"
+        },
+        "Tracker\\Tabular\\Source": {
+            "fileName": "/lib/core/Tracker/Tabular/Source/SourceInterface.php"
+        },
+        "Tracker\\Tabular\\Writer": {
+            "fileName": "/lib/core/Tracker/Tabular/Writer/TrackerWriter.php"
+        },
+        "tikiwiki": {
+            "fileName": "/lib/crypt/cryptlib.php"
+        },
+        "Tiki\\db": {
+            "fileName": "/lib/db/tiki_registration_fields.php"
+        },
+        "Text_Diff": {
+            "fileName": "/lib/diff/renderer_unified.php"
+        },
+        "latexrender": {
+            "fileName": "/lib/equation/class.latexrender.php"
+        },
+        "File": {
+            "fileName": "/lib/ical/File.php"
+        },
+        "iCal": {
+            "fileName": "/lib/ical/iCal/iCalendar.php"
+        },
+        "tikiimporter": {
+            "fileName": "/lib/importer/tikiimporter_wiki_mediawiki.php"
+        },
+        "TikiWiki\\lib\\init": {
+            "fileName": "/lib/init/smarty.php"
+        },
+        "Tiki\\Language": {
+            "fileName": "/lib/language/WriteFile.php"
+        },
+        "Tiki\\Parser": {
+            "fileName": "/lib/parser/parserlib.php"
+        },
+        "Spreadsheet_Excel_Writer": {
+            "fileName": "/lib/sheet/excel/writer/worksheet.php"
+        },
+        "core": {
+            "fileName": "/lib/sheet/include/core/APIClassRegistry.php"
+        },
+        "OLE": {
+            "fileName": "/lib/sheet/ole/pps/root.php"
+        },
+        "Test\\ObjectSelector": {
+            "fileName": "/lib/test/core/ObjectSelector/ObjectSelectorTest.php"
+        },
+        "Test\\Wiki": {
+            "fileName": "/lib/test/core/Wiki/SlugManagerTest.php"
+        },
+        "Mail": {
+            "fileName": "/lib/webmail/mimeDecode.php"
+        },
+        "Tiki\\Plugins": {
+            "fileName": "/lib/wiki/pluginslib.php"
+        }
+    }
+}]

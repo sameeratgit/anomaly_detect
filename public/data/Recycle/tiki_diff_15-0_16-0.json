@@ -1,0 +1,118 @@
+{
+    "lib/blogs/bloglib.php": {
+        "changes": "23",
+        "module": "Tiki\\Blogs"
+    },
+    "lib/surveys/surveylib.php": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/surveys/tiki-admin_survey_questions.js": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/svg-edit_tiki/draw.js": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/theme/iconsetlib.php": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/theme/themelib.php": {
+        "changes": "10",
+        "module": ""
+    },
+    "lib/tiki-js.js": {
+        "changes": "74",
+        "module": ""
+    },
+    "lib/tikiaccesslib.php": {
+        "changes": "10",
+        "module": ""
+    },
+    "lib/tikidate.php": {
+        "changes": "5",
+        "module": ""
+    },
+    "lib/tikilib.php": {
+        "changes": "54",
+        "module": ""
+    },
+    "lib/toolbars/toolbarslib.php": {
+        "changes": "19",
+        "module": ""
+    },
+    "lib/trackers/trackerlib.php": {
+        "changes": "200",
+        "module": ""
+    },
+    "lib/user/monitormaillib.php": {
+        "changes": "5",
+        "module": ""
+    },
+    "lib/user/sociallib.php": {
+        "changes": "8",
+        "module": ""
+    },
+    "lib/userslib.php": {
+        "changes": "433",
+        "module": ""
+    },
+    "lib/validators/validator_distinct.php": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/validators/validator_tiki.js": {
+        "changes": "35",
+        "module": ""
+    },
+    "lib/validators/validator_username.php": {
+        "changes": "41",
+        "module": ""
+    },
+    "lib/validatorslib.php": {
+        "changes": "14",
+        "module": ""
+    },
+    "lib/videogals/KalturaClient.php": {
+        "changes": "4344",
+        "module": ""
+    },
+    "lib/videogals/KalturaClientBase.php": {
+        "changes": "964",
+        "module": ""
+    },
+    "lib/videogals/KalturaClientReadme.txt": {
+        "changes": "1",
+        "module": ""
+    },
+    "lib/videogals/KalturaEnums.php": {
+        "changes": "1815",
+        "module": ""
+    },
+    "lib/wiki/editlib.php": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/wiki/histlib.php": {
+        "changes": "30",
+        "module": ""
+    },
+    "lib/wiki/renderlib.php": {
+        "changes": "4",
+        "module": ""
+    },
+    "lib/wiki/wikilib.php": {
+        "changes": "40",
+        "module": ""
+    },
+    "lib/wizard/pages/user_preferences_params.php": {
+        "changes": "2",
+        "module": ""
+    },
+    "lib/ziplib.php": {
+        "changes": "4",
+        "module": ""
+    }
+}

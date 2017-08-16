@@ -1,0 +1,175 @@
+[{
+    "+global": {
+        "+global": {
+            "afferent": 5
+        },
+        "accounting": {
+            "efferent": 2
+        },
+        "Tiki\\Blogs": {
+            "efferent": 5
+        },
+        "Exception": {
+            "fileName": "/lib/core/Horde/Exception/Wrapped.php"
+        },
+        "Yaml": {
+            "fileName": "/lib/core/Horde/Yaml/Node.php"
+        },
+        "Tiki\\Reports": {
+            "afferent": 1
+        },
+        "Search\\Federated": {
+            "afferent": 1
+        },
+        "Search\\ResultSet": {
+            "afferent": 1
+        },
+        "Tiki\\Table": {
+            "efferent": 1
+        },
+        "Tiki\\BigBlueButton": {
+            "afferent": 2
+        },
+        "Tiki\\Command": {
+            "fileName": "/lib/core/Tiki/Command/UpdateCommand.php"
+        },
+        "Tiki\\Command\\ProfileExport": {
+            "fileName": "/lib/core/Tiki/Command/ProfileExport/WikiPage.php"
+        },
+        "Tiki\\Composer": {
+            "fileName": "/lib/core/Tiki/Composer/ThemeInstaller.php"
+        },
+        "Tiki\\FileGallery": {
+            "afferent": 2
+        },
+        "Tiki\\FileGallery\\FileWrapper": {
+            "afferent": 1
+        },
+        "Tiki\\FileGallery\\Handler": {
+            "fileName": "/lib/core/Tiki/FileGallery/Handler/HandlerInterface.php"
+        },
+        "Tiki\\MailIn": {
+            "afferent": 1
+        },
+        "Tiki\\MailIn\\Action": {
+            "fileName": "/lib/core/Tiki/MailIn/Action/FactoryInterface.php"
+        },
+        "Tiki\\MailIn\\Exception": {
+            "fileName": "/lib/core/Tiki/MailIn/Exception/TransportException.php"
+        },
+        "Tiki\\MailIn\\Provider": {
+            "fileName": "/lib/core/Tiki/MailIn/Provider/ProviderInterface.php"
+        },
+        "Tiki\\MailIn\\Source": {
+            "fileName": "/lib/core/Tiki/MailIn/Source/SourceInterface.php"
+        },
+        "Tiki\\Object": {
+            "fileName": "/lib/core/Tiki/Object/SelectorItem.php"
+        },
+        "Tiki\\Recommendation": {
+            "fileName": "/lib/core/Tiki/Recommendation/EngineOutput.php"
+        },
+        "Tiki\\Recommendation\\Debug": {
+            "fileName": "/lib/core/Tiki/Recommendation/Debug/SourceDocument.php"
+        },
+        "Tiki\\Recommendation\\Engine": {
+            "fileName": "/lib/core/Tiki/Recommendation/Engine/EngineInterface.php"
+        },
+        "Tiki\\Recommendation\\Input": {
+            "afferent": 1
+        },
+        "Tiki\\Recommendation\\Store": {
+            "fileName": "/lib/core/Tiki/Recommendation/Store/StoreInterface.php"
+        },
+        "Tiki\\Wiki": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager.php"
+        },
+        "Tiki\\Wiki\\SlugManager": {
+            "fileName": "/lib/core/Tiki/Wiki/SlugManager/Generator.php"
+        },
+        "Tracker": {
+            "fileName": "/lib/core/Tracker/CompilerPass.php"
+        },
+        "Tracker\\Filter": {
+            "fileName": "/lib/core/Tracker/Filter/Filter.php"
+        },
+        "Tracker\\Filter\\Control": {
+            "fileName": "/lib/core/Tracker/Filter/Control/Control.php"
+        },
+        "Tracker\\Filter\\Exception": {
+            "fileName": "/lib/core/Tracker/Filter/Exception/ModeNotSupported.php"
+        },
+        "Tiki\\Trackers": {
+            "afferent": 9
+        },
+        "Tracker\\Tabular\\Exception": {
+            "fileName": "/lib/core/Tracker/Tabular/Exception/ModeNotSupported.php"
+        },
+        "Tracker\\Tabular": {
+            "afferent": 17
+        },
+        "Tracker\\Tabular\\Schema": {
+            "afferent": 1
+        },
+        "Tracker\\Tabular\\Source": {
+            "fileName": "/lib/core/Tracker/Tabular/Source/SourceInterface.php"
+        },
+        "Tracker\\Tabular\\Writer": {
+            "afferent": 1
+        },
+        "tikiwiki": {
+            "efferent": 1
+        },
+        "Tiki\\db": {
+            "afferent": 1
+        },
+        "Text_Diff": {
+            "afferent": 1
+        },
+        "latexrender": {
+            "fileName": "/lib/equation/class.latexrender.php"
+        },
+        "File": {
+            "efferent": 3
+        },
+        "iCal": {
+            "fileName": "/lib/ical/iCal/iCalendar.php"
+        },
+        "tikiimporter": {
+            "afferent": 2
+        },
+        "TikiWiki\\lib\\init": {
+            "afferent": 2
+        },
+        "Tiki\\Language": {
+            "afferent": 2
+        },
+        "JSMin": {
+            "afferent": 1
+        },
+        "Tiki\\Parser": {
+            "efferent": 11
+        },
+        "Spreadsheet_Excel_Writer": {
+            "efferent": 1
+        },
+        "core": {
+            "fileName": "/lib/sheet/include/core/APIClassRegistry.php"
+        },
+        "OLE": {
+            "fileName": "/lib/sheet/ole/pps/root.php"
+        },
+        "Test\\ObjectSelector": {
+            "fileName": "/lib/test/core/ObjectSelector/ObjectSelectorTest.php"
+        },
+        "Test\\Wiki": {
+            "fileName": "/lib/test/core/Wiki/SlugManagerTest.php"
+        },
+        "Mail": {
+            "efferent": 1
+        },
+        "Tiki\\Plugins": {
+            "afferent": 4
+        }
+    }
+}]

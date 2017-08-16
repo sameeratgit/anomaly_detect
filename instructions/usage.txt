@@ -1,0 +1,5 @@
+//Generate the Dependency Matrix from pDepend File::
+node app-pack-comp.js
+
+//Generate the History list from git diff output:
+node app-diff-comp.js

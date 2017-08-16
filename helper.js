@@ -53,7 +53,7 @@ exports.comparePackageChanges = function (data, cb) {
     var me = this;
 
     var packageKeys = {};
-    var foldersToExempt = ['...', 'src', 'main'];
+    var foldersToExempt = ['...', 'src', 'main', '*/', '*'];
 
     async.parallel({
         one: function (callback) {
@@ -92,7 +92,7 @@ exports.comparePackageChanges = function (data, cb) {
                     _splittedFile.pop();
 
                     //Ignore unwanted folders from prefix.
-                    if(data.prefixToIgnore.length > 0){
+                    if (data.prefixToIgnore.length > 0) {
                         data.prefixToIgnore.forEach(function (_folderExempt) {
                             _splittedFile = _splittedFile.filter(function (item) {
                                 return item !== _folderExempt
@@ -129,24 +129,24 @@ exports.comparePackageChanges = function (data, cb) {
 
             var _output = {};
 
-            for(var comp in comps){            
-                for(var compKey in comps[comp]){                
+            for (var comp in comps) {
+                for (var compKey in comps[comp]) {
 
                     var tempComparePackageKey = compKey.replace(/\\/gi, '');
 
-                    for(var packageKey in packageKeys){
-                        var tempCodeKey = packageKey.replace(/\\/gi, '');                        
+                    for (var packageKey in packageKeys) {
+                        var tempCodeKey = packageKey.replace(/\\/gi, '');
 
                         //if(tempCodeKey.indexOf(tempComparePackageKey) >= 0){
-                        if(tempCodeKey == tempComparePackageKey){
+                        if (tempCodeKey == tempComparePackageKey) {
                             _output[compKey] = {};
                             _output[compKey].changes = parseInt((packageKeys[packageKey]).changes);
-                        }                        
-                    }                
-                }            
-            }             
+                        }
+                    }
+                }
+            }
 
-            cb(null, _output);            
+            cb(null, _output);
         }
     })
 }
@@ -156,6 +156,13 @@ exports.processDiff = function (data, config, cb) {
 
     if (data.length > 0) {
         var output = {};
+        var hasDependency = false;
+        if (config.dependFile) {
+            hasDependency = true;
+            var dependContent = fs.readFileSync(config.dependFile);
+            var dependJSON = JSON.parse(dependContent);
+        }
+
         data.forEach(function (diffLine) {
 
             var diffContent = diffLine.toString().split('|');
@@ -163,34 +170,70 @@ exports.processDiff = function (data, config, cb) {
             if (diffContent.length == 2) {
 
                 //var _file = (diffContent[0]).trim().toString();                
-                var _file = ((diffContent[0]).trim().toString()).replace(/(\/)/g, '\\');
+                var _file = ((diffContent[0]).trim().toString()).replace(/(\/)/g, '/');
                 var _change = (diffContent[1]).trim().toString();
                 var _count = (diffContent[1]).trim().replace(/\D+/g, '');
 
-                if (_change.indexOf('->') >= 0) {
-                    if (config.needFileChange == true) {
-                        output[_file] = {};
-                        output[_file].changes = 1;
-                    }
-                } else if (_change.indexOf('+-') >= 0) {
-                    output[_file] = {};
-                    output[_file].changes = _count;
-                } else if (_change.indexOf('+') >= 0) {
-                    output[_file] = {};
-                    //output[_file].insertions = _count;
-                    output[_file].changes = _count;
-                } else if (_change.indexOf('-') >= 0) {
-                    output[_file] = {};
-                    //output[_file].deletions = _count;
-                    output[_file].changes = _count;
-                } else {
-                    output[_file] = {};
-                    output[_file].changes = _count;
-                }
+                if (!_file.includes('lib/test')) {
 
+                    if (_change.indexOf('->') >= 0) {
+                        if (config.needFileChange == true) {
+                            output[_file] = {};
+                            output[_file].changes = 1;
+                        }
+                    } else if (_change.indexOf('+-') >= 0) {
+                        output[_file] = {};
+                        output[_file].changes = _count;
+                    } else if (_change.indexOf('+') >= 0) {
+                        output[_file] = {};
+                        //output[_file].insertions = _count;
+                        output[_file].changes = _count;
+                    } else if (_change.indexOf('-') >= 0) {
+                        output[_file] = {};
+                        //output[_file].deletions = _count;
+                        output[_file].changes = _count;
+                    } else {
+                        output[_file] = {};
+                        output[_file].changes = _count;
+                    }
+
+                    if (hasDependency) {
+                        var module = '';
+                        var matchingPackage = '';
+                        var dependContent = fs.readFileSync(config.dependFile);
+                        var dependJSON = JSON.parse(dependContent);
+                        for (var packageIndex in dependJSON) {
+                            var package = dependJSON[packageIndex];
+                            for (var packageKey in package) {
+                                if (_file.trim().toLowerCase().replace('/', '\\\\').includes(packageKey.trim().toLowerCase())) {
+                                    matchingPackage = packageKey;
+                                }
+                                var packageClasses = package[packageKey];
+                                for (var classKey in packageClasses) {
+                                    var classObj = packageClasses[classKey];
+
+                                    if (classObj.fileName && classObj.fileName.trim().toLowerCase() == '/' + _file.trim().toLowerCase()) {
+                                        module = classKey;
+                                        break;
+                                    }
+                                    if (module != '')
+                                        break;
+                                }
+                                if (module != '')
+                                    break;
+                            }
+                            if (module != '')
+                                break;
+                        }
+                    }
+                    output[_file].module = module;// ? module : matchingPackage;
+
+                }
             }
         })
+
         cb(null, output);
+
     } else {
         cb(true);
     }

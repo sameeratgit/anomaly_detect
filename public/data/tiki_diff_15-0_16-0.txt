@@ -1,0 +1,560 @@
+ lib/TikiWebdav/Backend/Wiki.php                                                                       |     1 -
+ lib/activity/activitylib.php                                                                          |    40 ++
+ lib/articles/artlib.php                                                                               |    68 +-
+ lib/auth/tokens.php                                                                                   |     9 +-
+ lib/banners/bannerlib.php                                                                             |    14 +-
+ lib/blogs/bloglib.php                                                                                 |    23 +-
+ lib/breadcrumblib.php                                                                                 |     9 +-
+ lib/captcha/Captcha_ReCaptcha20.php                                                                   |     1 +
+ lib/captcha/captchalib.php                                                                            |     5 +
+ lib/categories/categlib.php                                                                           |     2 +-
+ lib/codemirror_tiki/codemirror_tiki.js                                                                |    16 +-
+ lib/codemirror_tiki/tiki_codemirror.php                                                               |    10 +-
+ lib/comments/commentslib.php                                                                          |    89 ++-
+ lib/core/Category/Manipulator.php                                                                     |     5 +-
+ lib/core/Feedback.php                                                                                 |   234 ++++++
+ lib/core/FutureLink/FutureUI.php                                                                      |     2 +-
+ lib/core/FutureLink/SendToFuture.php                                                                  |     2 +-
+ lib/core/Math/Formula/Function/Add.php                                                                |    18 +-
+ lib/core/Math/Formula/Function/Date.php                                                               |    16 +-
+ lib/core/Math/Formula/Function/Mul.php                                                                |    18 +-
+ lib/core/Math/Formula/Function/SplitList.php                                                          |    44 +-
+ lib/core/Multilingual/Aligner/BilingualAligner.php                                                    |     1 -
+ lib/core/Multilingual/Aligner/ShortestPathFinder.php                                                  |     2 -
+ lib/core/Perms.php                                                                                    |    23 +-
+ lib/core/Perms/Builder.php                                                                            |     8 +-
+ lib/core/Perms/Resolver.php                                                                           |     1 -
+ lib/core/Perms/Resolver/Static.php                                                                    |     1 -
+ lib/core/Perms/ResolverFactory/CategoryFactory.php                                                    |    44 +-
+ lib/core/Perms/ResolverFactory/ObjectFactory.php                                                      |    45 +-
+ lib/core/Reports/Send.php                                                                             |     2 +-
+ lib/core/Reports/Send/EmailBuilder/ForumPostThread.php                                                |     2 +-
+ lib/core/Reports/Send/EmailBuilder/TrackerFileAttachment.php                                          |     4 +-
+ lib/core/Reports/Send/EmailBuilder/WikiFileAttached.php                                               |     2 +-
+ lib/core/Reports/Send/EmailBuilder/WikiPageCreated.php                                                |    30 +
+ lib/core/Reports/Send/EmailBuilder/WikiPageDeleted.php                                                |    30 +
+ lib/core/Search/Action/TrackerItemModify.php                                                          |    35 +-
+ lib/core/Search/ContentSource/ArticleSource.php                                                       |     6 +
+ lib/core/Search/ContentSource/BlogPostSource.php                                                      |     4 +
+ lib/core/Search/ContentSource/CategorySource.php                                                      |     4 +
+ lib/core/Search/ContentSource/CommentSource.php                                                       |     4 +
+ lib/core/Search/ContentSource/FileGallerySource.php                                                   |     4 +
+ lib/core/Search/ContentSource/FileSource.php                                                          |     4 +
+ lib/core/Search/ContentSource/ForumPostSource.php                                                     |    13 +
+ lib/core/Search/ContentSource/ForumSource.php                                                         |     4 +
+ lib/core/Search/ContentSource/SheetSource.php                                                         |     4 +
+ lib/core/Search/ContentSource/TrackerFieldSource.php                                                  |     1 +
+ lib/core/Search/ContentSource/UserSource.php                                                          |    10 +
+ lib/core/Search/ContentSource/WikiSource.php                                                          |     4 +
+ lib/core/Search/Elastic/Connection.php                                                                |    22 +-
+ lib/core/Search/Elastic/FacetBuilder.php                                                              |     6 +-
+ lib/core/Search/Elastic/FacetReader.php                                                               |    23 +-
+ lib/core/Search/Elastic/Index.php                                                                     |    11 +-
+ lib/core/Search/Elastic/QueryBuilder.php                                                              |    32 +-
+ lib/core/Search/Elastic/TypeFactory.php                                                               |    10 +
+ lib/core/Search/Expr/Parser.php                                                                       |    26 +-
+ lib/core/Search/Formatter/Builder.php                                                                 |    21 +-
+ lib/core/Search/Formatter/DataSource/Declarative.php                                                  |     6 +-
+ lib/core/Search/Formatter/Plugin/SmartyTemplate.php                                                   |     1 +
+ lib/core/Search/Formatter/ValueFormatter/Datetime.php                                                 |    26 +-
+ lib/core/Search/Formatter/ValueFormatter/Timeago.php                                                  |    29 +
+ lib/core/Search/Formatter/ValueFormatter/Trackerrender.php                                            |    11 +
+ lib/core/Search/GlobalSource/ArticleAttachmentSource.php                                              |    12 +-
+ lib/core/Search/GlobalSource/CategorySource.php                                                       |    15 +-
+ lib/core/Search/GlobalSource/FileAttachmentSource.php                                                 |    12 +-
+ lib/core/Search/GlobalSource/RelationSource.php                                                       |    52 +-
+ lib/core/Search/Indexer.php                                                                           |    15 +-
+ lib/core/Search/Lucene/Index.php                                                                      |     4 +-
+ lib/core/Search/Lucene/TypeFactory.php                                                                |    11 +
+ lib/core/Search/MySql/Index.php                                                                       |     1 +
+ lib/core/Search/MySql/QueryBuilder.php                                                                |     7 +-
+ lib/core/Search/MySql/Table.php                                                                       |     2 +-
+ lib/core/Search/MySql/TypeFactory.php                                                                 |    14 +-
+ lib/core/Search/Query.php                                                                             |    30 +-
+ lib/core/Search/Query/WikiBuilder.php                                                                 |   124 +++-
+ lib/core/Search/ResultSet.php                                                                         |    29 +-
+ lib/core/Search/Type/Factory/Direct.php                                                               |    10 +
+ lib/core/Search/Type/Factory/Interface.php                                                            |     4 +
+ lib/core/Search/Type/Nested.php                                                                       |    21 +
+ lib/core/Search/Type/Object.php                                                                       |    21 +
+ lib/core/Services/Access/Controller.php                                                               |     1 +
+ lib/core/Services/ActivityStream/ManageController.php                                                 |    17 +-
+ lib/core/Services/AutoSave/Controller.php                                                             |    12 +
+ lib/core/Services/Comment/Controller.php                                                              |     4 +
+ lib/core/Services/File/Controller.php                                                                 |    33 +-
+ lib/core/Services/File/FinderController.php                                                           |    11 +-
+ lib/core/Services/File/Utilities.php                                                                  |     4 +-
+ lib/core/Services/Forum/Controller.php                                                                |   192 ++---
+ lib/core/Services/Kaltura/Controller.php                                                              |    41 ++
+ lib/core/Services/Language/TranslationController.php                                                  |    24 +
+ lib/core/Services/Module/Controller.php                                                               |     3 +-
+ lib/core/Services/Object/Controller.php                                                               |    12 +-
+ lib/core/Services/Search/Controller.php                                                               |     4 +-
+ lib/core/Services/Search/ManifoldController.php                                                       |     2 +-
+ lib/core/Services/Search/StoredController.php                                                         |     6 +-
+ lib/core/Services/Tracker/Controller.php                                                              |   206 ++++--
+ lib/core/Services/Tracker/Utilities.php                                                               |    10 +-
+ lib/core/Services/User/ConditionsController.php                                                       |     6 +-
+ lib/core/Services/User/Controller.php                                                                 |   373 +++++-----
+ lib/core/Services/User/MonitorController.php                                                          |    21 +
+ lib/core/Services/Utilities.php                                                                       |   145 ++++
+ lib/core/Services/Utilities/Controller.php                                                            |    68 --
+ lib/core/Services/Utilities/index.php                                                                 |    12 -
+ lib/core/Services/Wiki/StructureController.php                                                        |     2 +
+ lib/core/Table/Check.php                                                                              |    26 +-
+ lib/core/Table/Code/Bind.php                                                                          |     6 +-
+ lib/core/Table/Code/MainOptions.php                                                                   |    10 +
+ lib/core/Table/Code/Other.php                                                                         |    37 +-
+ lib/core/Table/Code/WidgetOptions.php                                                                 |     4 +
+ lib/core/Table/Code/WidgetOptionsFilter.php                                                           |    23 +-
+ lib/core/Table/Code/WidgetOptionsPager.php                                                            |   129 +---
+ lib/core/Table/Factory.php                                                                            |     2 +-
+ lib/core/Table/Plugin.php                                                                             |    12 +-
+ lib/core/Table/Settings/Abstract.php                                                                  |     8 -
+ lib/core/Table/Settings/TikiAdminusers.php                                                            |     1 +
+ lib/core/Table/Settings/TikiPayment.php                                                               |   117 +++
+ lib/core/Table/Settings/TikiPaymentPast.php                                                           |    77 ++
+ lib/core/Tiki/Command/AddonUpgradeCommand.php                                                         |     3 +
+ lib/core/Tiki/Command/BackupDBCommand.php                                                             |     4 +-
+ lib/core/Tiki/Command/BackupFilesCommand.php                                                          |    14 +-
+ lib/core/Tiki/Command/IndexCatchUpCommand.php                                                         |    12 +-
+ lib/core/Tiki/Command/IndexRebuildCommand.php                                                         |    11 +-
+ lib/core/Tiki/Command/MailQueueSendCommand.php                                                        |    20 +-
+ lib/core/Tiki/Command/MultiTikiMoveCommand.php                                                        |    16 +-
+ lib/core/Tiki/Command/PreferencesDeleteCommand.php                                                    |    52 ++
+ lib/core/Tiki/Command/PreferencesGetCommand.php                                                       |    52 ++
+ lib/core/Tiki/Command/PreferencesSetCommand.php                                                       |    65 ++
+ lib/core/Tiki/Command/RedactDBCommand.php                                                             |     4 +-
+ lib/core/Tiki/Command/RssClearCacheCommand.php                                                        |    79 +++
+ lib/core/Tiki/Composer/CleanVendors.php                                                               |    66 +-
+ lib/core/Tiki/Event/Function/EventLog.php                                                             |    46 ++
+ lib/core/Tiki/Event/Function/EventNotify.php                                                          |     6 +-
+ lib/core/Tiki/Event/Manager.php                                                                       |    24 +
+ lib/core/Tiki/Profile/InstallHandler/Tracker.php                                                      |     1 +
+ lib/core/Tiki/Profile/InstallHandler/TrackerField.php                                                 |     2 +
+ lib/core/Tiki/Profile/InstallHandler/WikiPage.php                                                     |    14 +-
+ lib/core/Tiki/Recommendation/EngineSet.php                                                            |     4 +
+ lib/core/Tiki/Render/Editable.php                                                                     |     4 +-
+ lib/core/TikiAddons/Addon.php                                                                         |     3 +-
+ lib/core/TikiDb/Pdo.php                                                                               |     2 +
+ lib/core/TikiFilter/PreventXss.php                                                                    |   228 +++---
+ lib/core/Tracker/Field/Abstract.php                                                                   |    25 +-
+ lib/core/Tracker/Field/AutoIncrement.php                                                              |    11 +
+ lib/core/Tracker/Field/Category.php                                                                   |     2 +-
+ lib/core/Tracker/Field/DateTime.php                                                                   |    16 +-
+ lib/core/Tracker/Field/Dropdown.php                                                                   |     4 +-
+ lib/core/Tracker/Field/DynamicList.php                                                                |    47 ++
+ lib/core/Tracker/Field/Email.php                                                                      |    21 +
+ lib/core/Tracker/Field/Factory.php                                                                    |     3 +-
+ lib/core/Tracker/Field/Files.php                                                                      |    58 +-
+ lib/core/Tracker/Field/GroupSelector.php                                                              |     4 +-
+ lib/core/Tracker/Field/ItemLink.php                                                                   |   199 ++++--
+ lib/core/Tracker/Field/ItemsList.php                                                                  |    64 +-
+ lib/core/Tracker/Field/JsCalendar.php                                                                 |    37 +-
+ lib/core/Tracker/Field/Kaltura.php                                                                    |    46 +-
+ lib/core/Tracker/Field/Location.php                                                                   |   129 +++-
+ lib/core/Tracker/Field/Math.php                                                                       |     8 +-
+ lib/core/Tracker/Field/Text.php                                                                       |    11 +-
+ lib/core/Tracker/Field/UserSelector.php                                                               |    32 +-
+ lib/core/Tracker/Field/WebService.php                                                                 |    35 +-
+ lib/core/Tracker/Field/Wiki.php                                                                       |     2 +-
+ lib/core/Tracker/Item.php                                                                             |     9 +-
+ lib/core/Tracker/Tabular/Schema.php                                                                   |     2 +-
+ lib/diff/difflib.php                                                                                  |     2 +-
+ lib/diff/renderer_bytes.php                                                                           |     7 +-
+ lib/diff/renderer_unified.php                                                                         |     5 +
+ lib/errorreportlib.php                                                                                |    46 --
+ lib/filegals/filegallib.php                                                                           |   174 +++--
+ lib/filegals/vimeolib.php                                                                             |     4 +-
+ lib/headerlib.php                                                                                     |    17 +-
+ lib/htmlparser/htmlgrammarparser.inc                                                                  |     2 +-
+ lib/htmlparser/htmlparser.inc                                                                         |     2 +-
+ lib/images/icons/3ds.png                                                                              |   Bin 13819 -> 3201 bytes
+ lib/images/icons/7z.png                                                                               |   Bin 5438 -> 3317 bytes
+ lib/images/icons/abw.png                                                                              |   Bin 8672 -> 4242 bytes
+ lib/images/icons/ac3.png                                                                              |   Bin 28176 -> 5333 bytes
+ lib/images/icons/ag.png                                                                               |   Bin 12834 -> 3071 bytes
+ lib/images/icons/arj.png                                                                              |   Bin 17247 -> 4559 bytes
+ lib/images/icons/avi.png                                                                              |   Bin 19247 -> 4214 bytes
+ lib/images/icons/bmp.png                                                                              |   Bin 14384 -> 3258 bytes
+ lib/images/icons/deb.png                                                                              |   Bin 23414 -> 5260 bytes
+ lib/images/icons/dia.png                                                                              |   Bin 21942 -> 4469 bytes
+ lib/images/icons/doc.png                                                                              |   Bin 8563 -> 4139 bytes
+ lib/images/icons/dvi.png                                                                              |   Bin 14937 -> 4011 bytes
+ lib/images/icons/fig.png                                                                              |   Bin 12163 -> 2935 bytes
+ lib/images/icons/flv.png                                                                              |   Bin 4856 -> 3107 bytes
+ lib/images/icons/gif.png                                                                              |   Bin 12293 -> 2963 bytes
+ lib/images/icons/gzip.png                                                                             |   Bin 16393 -> 4427 bytes
+ lib/images/icons/htm.png                                                                              |   Bin 10225 -> 4818 bytes
+ lib/images/icons/html.png                                                                             |   Bin 10225 -> 4812 bytes
+ lib/images/icons/ief.png                                                                              |   Bin 12062 -> 2925 bytes
+ lib/images/icons/jpeg.png                                                                             |   Bin 12770 -> 3036 bytes
+ lib/images/icons/jpg.png                                                                              |   Bin 12770 -> 3033 bytes
+ lib/images/icons/lha.png                                                                              |   Bin 13529 -> 3598 bytes
+ lib/images/icons/mod.png                                                                              |   Bin 28716 -> 5436 bytes
+ lib/images/icons/mov.png                                                                              |   Bin 21095 -> 4469 bytes
+ lib/images/icons/mp3.png                                                                              |   Bin 27827 -> 5334 bytes
+ lib/images/icons/mp4.png                                                                              |   Bin 5180 -> 3246 bytes
+ lib/images/icons/mpeg.png                                                                             |   Bin 19572 -> 4244 bytes
+ lib/images/icons/mpg.png                                                                              |   Bin 19572 -> 4251 bytes
+ lib/images/icons/odg.png                                                                              |   Bin 7686 -> 4268 bytes
+ lib/images/icons/odp.png                                                                              |   Bin 5379 -> 3361 bytes
+ lib/images/icons/ods.png                                                                              |   Bin 6073 -> 3678 bytes
+ lib/images/icons/odt.png                                                                              |   Bin 8966 -> 4364 bytes
+ lib/images/icons/ogg.png                                                                              |   Bin 29348 -> 5435 bytes
+ lib/images/icons/ogm.png                                                                              |   Bin 5905 -> 3530 bytes
+ lib/images/icons/ogv.png                                                                              |   Bin 6050 -> 3612 bytes
+ lib/images/icons/pbm.png                                                                              |   Bin 14512 -> 3338 bytes
+ lib/images/icons/pdf.png                                                                              |   Bin 18586 -> 3905 bytes
+ lib/images/icons/perl.png                                                                             |   Bin 35067 -> 6441 bytes
+ lib/images/icons/pgm.png                                                                              |   Bin 14562 -> 3256 bytes
+ lib/images/icons/php.png                                                                              |   Bin 33203 -> 6218 bytes
+ lib/images/icons/png.png                                                                              |   Bin 14204 -> 3189 bytes
+ lib/images/icons/pnm.png                                                                              |   Bin 14001 -> 3208 bytes
+ lib/images/icons/ppm.png                                                                              |   Bin 13793 -> 3202 bytes
+ lib/images/icons/ppt.png                                                                              |   Bin 17239 -> 3793 bytes
+ lib/images/icons/ps.png                                                                               |   Bin 16438 -> 3590 bytes
+ lib/images/icons/psd.png                                                                              |   Bin 13589 -> 3213 bytes
+ lib/images/icons/py.png                                                                               |   Bin 32489 -> 6098 bytes
+ lib/images/icons/rar.png                                                                              |   Bin 17214 -> 4771 bytes
+ lib/images/icons/ras.png                                                                              |   Bin 14724 -> 3397 bytes
+ lib/images/icons/rgb.png                                                                              |   Bin 14475 -> 3303 bytes
+ lib/images/icons/rpm.png                                                                              |   Bin 25042 -> 5715 bytes
+ lib/images/icons/rtf.png                                                                              |   Bin 7566 -> 3785 bytes
+ lib/images/icons/svg.png                                                                              |   Bin 7335 -> 4112 bytes
+ lib/images/icons/swf.png                                                                              |   Bin 38790 -> 7060 bytes
+ lib/images/icons/swfl.png                                                                             |   Bin 38799 -> 7062 bytes
+ lib/images/icons/sxc.png                                                                              |   Bin 30848 -> 5714 bytes
+ lib/images/icons/sxd.png                                                                              |   Bin 34045 -> 5961 bytes
+ lib/images/icons/sxi.png                                                                              |   Bin 27594 -> 5410 bytes
+ lib/images/icons/sxw.png                                                                              |   Bin 12038 -> 5581 bytes
+ lib/images/icons/tar.png                                                                              |   Bin 16746 -> 4570 bytes
+ lib/images/icons/tbz.png                                                                              |   Bin 16574 -> 4466 bytes
+ lib/images/icons/tex.png                                                                              |   Bin 15235 -> 3964 bytes
+ lib/images/icons/tga.png                                                                              |   Bin 13515 -> 3227 bytes
+ lib/images/icons/tgz.png                                                                              |   Bin 16595 -> 4513 bytes
+ lib/images/icons/tiff.png                                                                             |   Bin 11920 -> 2910 bytes
+ lib/images/icons/unknown.png                                                                          |   Bin 29088 -> 5601 bytes
+ lib/images/icons/voc.png                                                                              |   Bin 28934 -> 5542 bytes
+ lib/images/icons/wav.png                                                                              |   Bin 29403 -> 5483 bytes
+ lib/images/icons/wmv.png                                                                              |   Bin 21079 -> 4536 bytes
+ lib/images/icons/xbm.png                                                                              |   Bin 14845 -> 3429 bytes
+ lib/images/icons/xcf.png                                                                              |   Bin 27320 -> 5350 bytes
+ lib/images/icons/xls.png                                                                              |   Bin 22468 -> 4484 bytes
+ lib/images/icons/xml.png                                                                              |   Bin 8357 -> 4135 bytes
+ lib/images/icons/xpm.png                                                                              |   Bin 14656 -> 3384 bytes
+ lib/images/icons/xwd.png                                                                              |   Bin 16363 -> 3621 bytes
+ lib/images/icons/zip.png                                                                              |   Bin 16337 -> 4388 bytes
+ lib/importer/tikiimporter_blog_wordpress.php                                                          |     4 +-
+ lib/init/smarty.php                                                                                   |    55 +-
+ lib/init/tra.php                                                                                      |     6 +-
+ lib/jquery_tiki/autoToc.js                                                                            |    59 +-
+ lib/jquery_tiki/customsearch.js                                                                       |     4 +-
+ lib/jquery_tiki/elfinder/elFinderVolumeTikiFiles.class.php                                            |    34 +-
+ lib/jquery_tiki/elfinder/tiki-elfinder.js                                                             |     2 +
+ lib/jquery_tiki/files.js                                                                              |   112 ++-
+ lib/jquery_tiki/iconsets.js                                                                           |    16 +-
+ lib/jquery_tiki/inline_edit.js                                                                        |    27 +-
+ lib/jquery_tiki/tablesorter.js                                                                        |   149 ++++
+ lib/jquery_tiki/tiki-ajax_services.js                                                                 |   142 +---
+ lib/jquery_tiki/tiki-connect.js                                                                       |    15 +-
+ lib/jquery_tiki/tiki-jquery.js                                                                        |   396 +++++++----
+ lib/jquery_tiki/tiki-jquery_upload.js                                                                 |    26 +-
+ lib/jquery_tiki/tiki-maps-ol3.js                                                                      |    12 +-
+ lib/jquery_tiki/tiki-maps.js                                                                          |    20 +-
+ lib/jquery_tiki/tiki-trackers.js                                                                      |     4 +-
+ lib/logs/logslib.php                                                                                  |     4 +-
+ lib/mail/maillib.php                                                                                  |     6 +-
+ lib/messu/messulib.php                                                                                |    14 +-
+ lib/metadata/datatypes/iptc.php                                                                       |   102 +--
+ lib/mods/modslib.php                                                                                  |    28 +-
+ lib/modules/modlib.php                                                                                |    26 +-
+ lib/modules/tiki-admin_modules.js                                                                     |     6 +-
+ lib/newsletters/nllib.php                                                                             |    15 +-
+ lib/notifications/notificationemaillib.php                                                            |    16 +-
+ lib/oauthlib.php                                                                                      |     5 +-
+ lib/openlayers/img/marker-gold.png                                                                    |   Bin 598 -> 595 bytes
+ lib/openlayers/img/marker-green.png                                                                   |   Bin 656 -> 655 bytes
+ lib/openlayers/img/marker.png                                                                         |   Bin 497 -> 496 bytes
+ lib/openlayers/theme/default/img/add_point_on.png                                                     |   Bin 365 -> 364 bytes
+ lib/openlayers/theme/default/img/draw_line_off.png                                                    |   Bin 458 -> 456 bytes
+ lib/openlayers/theme/default/img/move_feature_on.png                                                  |   Bin 220 -> 219 bytes
+ lib/openlayers/theme/default/img/navigation_history.png                                               |   Bin 4041 -> 2596 bytes
+ lib/openlayers/theme/default/img/pan-panel.png                                                        |   Bin 568 -> 566 bytes
+ lib/openlayers/theme/default/img/save_features_off.png                                                |   Bin 271 -> 270 bytes
+ lib/openlayers/theme/default/img/view_next_on.png                                                     |   Bin 1522 -> 1363 bytes
+ lib/openlayers/theme/default/img/view_previous_on.png                                                 |   Bin 1497 -> 1494 bytes
+ lib/parser/parserlib.php                                                                              |    83 ++-
+ lib/payment/cartlib.js                                                                                |    59 +-
+ lib/payment/cartlib.php                                                                               |     7 +-
+ lib/payment/cclitelib.php                                                                             |     2 +-
+ lib/payment/paymentlib.php                                                                            |   146 +++-
+ lib/payment/paypallib.php                                                                             |    10 +-
+ lib/pdflib.php                                                                                        |   318 ++++++++-
+ lib/perspective/binderlib.php                                                                         |     7 +-
+ lib/perspectivelib.php                                                                                |    14 +
+ lib/polls/polllib_shared.php                                                                          |     8 +-
+ lib/prefs/article.php                                                                                 |     8 +
+ lib/prefs/category.php                                                                                |     5 +-
+ lib/prefs/change.php                                                                                  |     3 +
+ lib/prefs/cookie.php                                                                                  |    15 +
+ lib/prefs/feature.php                                                                                 |    29 +-
+ lib/prefs/federated.php                                                                               |     4 +-
+ lib/prefs/fgal.php                                                                                    |     6 +-
+ lib/prefs/file.php                                                                                    |     1 -
+ lib/prefs/forum.php                                                                                   |     7 +
+ lib/prefs/global.php                                                                                  |     2 +-
+ lib/prefs/http.php                                                                                    |    45 ++
+ lib/prefs/image.php                                                                                   |    18 +
+ lib/prefs/javascript.php                                                                              |     7 +
+ lib/prefs/lang.php                                                                                    |     6 +
+ lib/prefs/namespace.php                                                                               |     6 +
+ lib/prefs/payment.php                                                                                 |    24 +-
+ lib/prefs/poll.php                                                                                    |     8 +
+ lib/prefs/print.php                                                                                   |    47 ++
+ lib/prefs/rating.php                                                                                  |     6 +
+ lib/prefs/recaptcha.php                                                                               |     4 +-
+ lib/prefs/site.php                                                                                    |    11 +
+ lib/prefs/socialnetworks.php                                                                          |    58 +-
+ lib/prefs/theme.php                                                                                   |     9 +
+ lib/prefs/tracker.php                                                                                 |    44 +-
+ lib/prefs/unified.php                                                                                 |    25 +-
+ lib/prefs/user.php                                                                                    |    24 +-
+ lib/prefs/users.php                                                                                   |     9 +
+ lib/prefs/wiki.php                                                                                    |    43 +-
+ lib/prefs/wikiplugin.php                                                                              |     1 +
+ lib/prefs/zend.php                                                                                    |    13 +-
+ lib/quizzes/quizlib.php                                                                               |     6 +-
+ lib/registration/registrationlib.php                                                                  |     2 +-
+ lib/rss/rsslib.php                                                                                    |    57 +-
+ lib/score/scorelib.php                                                                                |    32 +
+ lib/search/refresh-functions.php                                                                      |     3 +-
+ lib/search/searchlib-unified.php                                                                      |    36 +-
+ lib/setup/absolute_urls.php                                                                           |     6 +-
+ lib/setup/avatar_force_upload.php                                                                     |    22 +
+ lib/setup/challenge.php                                                                               |    19 -
+ lib/setup/cookies.php                                                                                 |     1 +
+ lib/setup/error_reporting.php                                                                         |     2 -
+ lib/setup/events.php                                                                                  |    61 +-
+ lib/setup/javascript.php                                                                              |    11 +-
+ lib/setup/mobile.php                                                                                  |     3 +-
+ lib/setup/polls.php                                                                                   |    11 +-
+ lib/setup/prefs.php                                                                                   |     6 +-
+ lib/setup/sections.php                                                                                |     6 +-
+ lib/setup/theme.php                                                                                   |     5 +-
+ lib/setup/tracker_force_fill.php                                                                      |    47 ++
+ lib/setup/twversion.class.php                                                                         |    16 +-
+ lib/setup/wiki.php                                                                                    |     4 +-
+ lib/sheet/excel/reader.php                                                                            |     2 +-
+ lib/sheet/excel/reader_ole.php                                                                        |     2 +-
+ lib/sheet/excel/writer.php                                                                            |     2 +-
+ lib/sheet/excel/writer/biffwriter.php                                                                 |     2 +-
+ lib/sheet/excel/writer/format.php                                                                     |     2 +-
+ lib/sheet/excel/writer/parser.php                                                                     |     2 +-
+ lib/sheet/excel/writer/validator.php                                                                  |     2 +-
+ lib/sheet/excel/writer/workbook.php                                                                   |     4 +-
+ lib/sheet/excel/writer/worksheet.php                                                                  |     2 +-
+ lib/sheet/grid.js                                                                                     |     4 +-
+ lib/sheet/grid.php                                                                                    |     4 +-
+ lib/shipping/shippinglib.php                                                                          |     2 +-
+ lib/smarty_tiki/block.addonview.php                                                                   |    44 ++
+ lib/smarty_tiki/block.pagination_links.php                                                            |     6 +-
+ lib/smarty_tiki/block.permission.php                                                                  |     2 +-
+ lib/smarty_tiki/block.remarksbox.php                                                                  |     1 +
+ lib/smarty_tiki/block.self_link.php                                                                   |    16 +-
+ lib/smarty_tiki/block.title.php                                                                       |     2 +
+ lib/smarty_tiki/function.error_report.php                                                             |    73 --
+ lib/smarty_tiki/function.favorite.php                                                                 |     2 +-
+ lib/smarty_tiki/function.feedback.php                                                                 |    54 ++
+ lib/smarty_tiki/function.html_body_attributes.php                                                     |    27 +-
+ lib/smarty_tiki/function.jscalendar.php                                                               |    18 +-
+ lib/smarty_tiki/function.menu.php                                                                     |     5 +-
+ lib/smarty_tiki/function.multilike.php                                                                |    21 +-
+ lib/smarty_tiki/function.object_link.php                                                              |     8 +-
+ lib/smarty_tiki/function.object_score.php                                                             |    35 +
+ lib/smarty_tiki/function.object_selector_multi.php                                                    |     1 +
+ lib/smarty_tiki/function.payment.php                                                                  |    24 +-
+ lib/smarty_tiki/function.permission_link.php                                                          |     6 +-
+ lib/smarty_tiki/function.pluralize.php                                                                |    30 +
+ lib/smarty_tiki/function.query.php                                                                    |    20 +-
+ lib/smarty_tiki/function.sefurl.php                                                                   |     6 +-
+ lib/smarty_tiki/function.trackerfields.php                                                            |    29 +-
+ lib/smarty_tiki/function.user_registration.php                                                        |    70 +-
+ lib/smarty_tiki/function.user_selector.php                                                            |    57 +-
+ lib/smarty_tiki/function.wikidiff.php                                                                 |    77 ++
+ lib/smarty_tiki/modifier.categid.php                                                                  |    13 +
+ lib/smarty_tiki/modifier.pagename.php                                                                 |    13 +-
+ lib/smarty_tiki/modifier.sefurl.php                                                                   |     2 +-
+ lib/smarty_tiki/modifier.userlink.php                                                                 |    10 +-
+ lib/soap/nusoap/nusoap.php                                                                            |    46 +-
+ lib/socialnetworkslib.php                                                                             |    25 +-
+ lib/structures/structlib.php                                                                          |    68 +-
+ lib/structures/tiki-edit_structure.js                                                                 |     4 +-
+ lib/surveys/surveylib.php                                                                             |     2 +-
+ lib/surveys/tiki-admin_survey_questions.js                                                            |     2 +-
+ lib/svg-edit_tiki/draw.js                                                                             |     2 +-
+ lib/test/TestRunnerWithBaseline.php                                                                   |     2 +-
+ lib/test/TikiLib/LibTest.php                                                                          |     3 +-
+ lib/test/TikiLib/MultiExplodeTest.php                                                                 |    13 +-
+ lib/test/TikiLib/TestableTikiLibTest.php                                                              |     6 +-
+ lib/test/TikiLib/WikiParserTest.php                                                                   |    10 +-
+ lib/test/TikiVersionTest.php                                                                          |     4 +-
+ lib/test/auth/AuthTokensTest.php                                                                      |    66 +-
+ lib/test/auth/MembershipTest.php                                                                      |    52 +-
+ lib/test/auth/fixtures/auth_tokens_dataset_create.xml                                                 |     8 +
+ lib/test/auth/fixtures/auth_tokens_dataset_delete_hits.xml                                            |    14 +-
+ lib/test/auth/fixtures/auth_tokens_dataset_delete_timeout.xml                                         |    14 +-
+ lib/test/bootstrap.php                                                                                |    14 +-
+ lib/test/core/Connect/ClientTest.php                                                                  |     5 +
+ lib/test/core/DeclFilter/ConfigureTest.php                                                            |     4 +-
+ lib/test/core/Event/CustomizerTest.php                                                                |     3 +
+ lib/test/core/Math/Formula/RunnerTest.php                                                             |    30 +
+ lib/test/core/Perms/ApplierTest.php                                                                   |    18 +-
+ lib/test/core/Perms/BaseTest.php                                                                      |    16 +-
+ lib/test/core/Perms/BuilderTest.php                                                                   |     2 +
+ lib/test/core/Perms/Check/CreatorTest.php                                                             |     6 +-
+ lib/test/core/Perms/Check/DirectTest.php                                                              |     4 +-
+ lib/test/core/Perms/Check/IndirectTest.php                                                            |     6 +-
+ lib/test/core/Perms/CheckSequenceTest.php                                                             |     4 +-
+ lib/test/core/Perms/MixedTest.php                                                                     |     2 +-
+ lib/test/core/Perms/ResolverFactory/CategoryFactoryTest.php                                           |    71 ++
+ lib/test/core/Perms/ResolverFactory/ObjectFactoryTest.php                                             |    64 ++
+ lib/test/core/Recommendation/EngineSetTest.php                                                        |     9 +-
+ lib/test/core/Reports/ReportsEndToEndTest.php                                                         |     6 +-
+ lib/test/core/Reports/Send/EmailBuilderTest.php                                                       |    14 +-
+ lib/test/core/Reports/SendTest.php                                                                    |    12 +-
+ lib/test/core/Reports/UsersTest.php                                                                   |     6 +-
+ lib/test/core/Reports/fixtures/end_to_end_test_dataset.xml                                            |     2 -
+ lib/test/core/Search/ActionStepTest.php                                                               |    20 +-
+ lib/test/core/Search/Elastic/BaseTest.php                                                             |     4 +-
+ lib/test/core/Search/Elastic/BulkIncrementalUpdateTest.php                                            |     2 +-
+ lib/test/core/Search/Elastic/CamelCaseTest.php                                                        |     2 +-
+ lib/test/core/Search/Elastic/FacetTest.php                                                            |     4 +-
+ lib/test/core/Search/Elastic/FederatedQueryTest.php                                                   |     2 +-
+ lib/test/core/Search/Elastic/IncrementalUpdateTest.php                                                |     2 +-
+ lib/test/core/Search/Elastic/MoreLikeThisTest.php                                                     |     2 +-
+ lib/test/core/Search/Elastic/NumericTest.php                                                          |     2 +-
+ lib/test/core/Search/Elastic/PaginationTest.php                                                       |     2 +-
+ lib/test/core/Search/Elastic/ProtocolTest.php                                                         |     2 +-
+ lib/test/core/Search/Elastic/QueryBuilderTest.php                                                     |    53 +-
+ lib/test/core/Search/Elastic/QueryRepositoryTest.php                                                  |     4 +-
+ lib/test/core/Search/Elastic/SortTest.php                                                             |     2 +-
+ lib/test/core/Search/Elastic/StemmingTest.php                                                         |     2 +-
+ lib/test/core/Search/Elastic/TypeAnalyzerTest.php                                                     |     2 +-
+ lib/test/core/Search/Expr/ParserTest.php                                                              |    10 +-
+ lib/test/core/Search/FormatterTest.php                                                                |    24 +-
+ lib/test/core/Search/Index/BaseTest.php                                                               |    14 +-
+ lib/test/core/Search/Lucene/BaseTest.php                                                              |     5 +
+ lib/test/core/Search/MySql/LargeDatasetTest.php                                                       |     2 +-
+ lib/test/core/Search/MySql/QueryBuilderTest.php                                                       |    42 +-
+ lib/test/core/Search/MySql/SortTest.php                                                               |     5 -
+ lib/test/core/TikiDb/TableTest.php                                                                    |   102 +--
+ lib/test/core/TikiFilter/MapTest.php                                                                  |     8 +-
+ lib/test/core/WikiParser/OutputLinkTest.php                                                           |    12 +-
+ lib/test/core/WikiParser/PluginParserTest.php                                                         |    20 +-
+ lib/test/editlib/EditLibTest.php                                                                      |    10 -
+ lib/test/editlib/ParseToWiki_CharacterTest.php                                                        |    10 -
+ lib/test/editlib/ParseToWiki_LinkTest.php                                                             |    12 -
+ lib/test/editlib/ParseToWiki_ListTest.php                                                             |    11 -
+ lib/test/editlib/ParseToWiki_TextTest.php                                                             |    11 -
+ lib/test/editlib/ParseToWysiwyg_CharacterTest.php                                                     |    13 +-
+ lib/test/editlib/ParseToWysiwyg_LinkTest.php                                                          |     9 +-
+ lib/test/editlib/ParseToWysiwyg_ListTest.php                                                          |    12 +-
+ lib/test/editlib/ParseToWysiwyg_TextTest.php                                                          |    42 +-
+ lib/test/importer/TikiImporterBlogTest.php                                                            |   112 ++-
+ lib/test/importer/TikiImporterBlogWordpressTest.php                                                   |    74 +-
+ lib/test/importer/TikiImporterWikiMediawikiTest.php                                                   |    70 +-
+ lib/test/importer/TikiImporterWikiTest.php                                                            |    38 +-
+ lib/test/language/CollectFilesTest.php                                                                |    28 +-
+ lib/test/language/GetStringsTest.php                                                                  |    63 +-
+ lib/test/language/LanguageTranslationsTest.php                                                        |    51 +-
+ lib/test/language/MergeFilesTest.php                                                                  |    13 +-
+ lib/test/language/ParseFileTest.php                                                                   |     6 +-
+ lib/test/language/WriteFileTest.php                                                                   |    47 +-
+ lib/test/payment/CartTest.php                                                                         |     6 +-
+ lib/test/rating/AggregationTest.php                                                                   |     8 +-
+ lib/test/rating/RegisterVoteTest.php                                                                  |     8 +-
+ lib/test/wiki-plugins/TranslationOfTest.php                                                           |    11 +-
+ lib/theme/iconsetlib.php                                                                              |     2 +-
+ lib/theme/themelib.php                                                                                |    10 +-
+ lib/tiki-js.js                                                                                        |    74 +-
+ lib/tikiaccesslib.php                                                                                 |    10 +-
+ lib/tikidate.php                                                                                      |     5 +-
+ lib/tikilib.php                                                                                       |    54 +-
+ lib/toolbars/toolbarslib.php                                                                          |    19 +-
+ lib/trackers/trackerlib.php                                                                           |   200 ++++--
+ lib/user/monitormaillib.php                                                                           |     5 +-
+ lib/user/sociallib.php                                                                                |     8 +-
+ lib/userslib.php                                                                                      |   433 +++++-------
+ lib/validators/validator_distinct.php                                                                 |     2 +-
+ lib/validators/validator_tiki.js                                                                      |    35 +-
+ lib/validators/validator_username.php                                                                 |    41 +-
+ lib/validatorslib.php                                                                                 |    14 +-
+ lib/videogals/KalturaClient.php                                                                       |  4344 ---------------------------------------------------------------------------------------------------------------
+ lib/videogals/KalturaClientBase.php                                                                   |   964 -------------------------
+ lib/videogals/KalturaClientReadme.txt                                                                 |     1 -
+ lib/videogals/KalturaEnums.php                                                                        |  1815 -----------------------------------------------
+ lib/videogals/KalturaPlugins/KalturaAuditClientPlugin.php                                             |   760 --------------------
+ lib/videogals/KalturaTypes.php                                                                        |  9611 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ lib/videogals/kalturalib.php                                                                          |    24 +-
+ lib/webmail/tikimaillib.php                                                                           |    73 +-
+ lib/webservicelib.php                                                                                 |    10 +-
+ lib/wiki-plugins/wikiplugin_addon.php                                                                 |    28 +-
+ lib/wiki-plugins/wikiplugin_addtocart.php                                                             |     2 +-
+ lib/wiki-plugins/wikiplugin_appframe.php                                                              |     2 +-
+ lib/wiki-plugins/wikiplugin_archivebuilder.php                                                        |    27 +-
+ lib/wiki-plugins/wikiplugin_bloglist.php                                                              |     2 +-
+ lib/wiki-plugins/wikiplugin_box.php                                                                   |     1 +
+ lib/wiki-plugins/wikiplugin_carousel.php                                                              |     2 +-
+ lib/wiki-plugins/wikiplugin_chartjs.php                                                               |   125 ++++
+ lib/wiki-plugins/wikiplugin_convene.php                                                               |   168 ++---
+ lib/wiki-plugins/wikiplugin_customsearch.php                                                          |    10 +-
+ lib/wiki-plugins/wikiplugin_datachannel.php                                                           |     2 +-
+ lib/wiki-plugins/wikiplugin_div.php                                                                   |    10 +-
+ lib/wiki-plugins/wikiplugin_dl.php                                                                    |    29 +-
+ lib/wiki-plugins/wikiplugin_fade.php                                                                  |    43 +-
+ lib/wiki-plugins/wikiplugin_favorite.php                                                              |     2 +-
+ lib/wiki-plugins/wikiplugin_file.php                                                                  |     6 +-
+ lib/wiki-plugins/wikiplugin_files.php                                                                 |    16 +-
+ lib/wiki-plugins/wikiplugin_footnote.php                                                              |    69 +-
+ lib/wiki-plugins/wikiplugin_footnotearea.php                                                          |    30 +-
+ lib/wiki-plugins/wikiplugin_googlechart.php                                                           |     2 +-
+ lib/wiki-plugins/wikiplugin_htmlfeedlink.php                                                          |     4 +-
+ lib/wiki-plugins/wikiplugin_icon.php                                                                  |     1 +
+ lib/wiki-plugins/wikiplugin_iframe.php                                                                |    34 +-
+ lib/wiki-plugins/wikiplugin_img.php                                                                   |    11 +-
+ lib/wiki-plugins/wikiplugin_include.php                                                               |     1 +
+ lib/wiki-plugins/wikiplugin_invite.php                                                                |     3 +-
+ lib/wiki-plugins/wikiplugin_jabber.php                                                                |     6 +-
+ lib/wiki-plugins/wikiplugin_kaltura.php                                                               |    16 +-
+ lib/wiki-plugins/wikiplugin_list.php                                                                  |    71 +-
+ lib/wiki-plugins/wikiplugin_listexecute.php                                                           |    66 +-
+ lib/wiki-plugins/wikiplugin_listpages.php                                                             |    66 +-
+ lib/wiki-plugins/wikiplugin_mail.php                                                                  |     4 +-
+ lib/wiki-plugins/wikiplugin_mediaplayer.php                                                           |    18 +-
+ lib/wiki-plugins/wikiplugin_module.php                                                                |     2 +-
+ lib/wiki-plugins/wikiplugin_pagetabs.php                                                              |     2 +-
+ lib/wiki-plugins/wikiplugin_paypal.php                                                                |     6 +-
+ lib/wiki-plugins/wikiplugin_perm.php                                                                  |     4 +-
+ lib/wiki-plugins/wikiplugin_poll.php                                                                  |     4 +-
+ lib/wiki-plugins/wikiplugin_quote.php                                                                 |    49 +-
+ lib/wiki-plugins/wikiplugin_redirect.php                                                              |     1 +
+ lib/wiki-plugins/wikiplugin_slider.php                                                                |     8 +
+ lib/wiki-plugins/wikiplugin_tag.php                                                                   |     2 +-
+ lib/wiki-plugins/wikiplugin_toc.php                                                                   |    61 +-
+ lib/wiki-plugins/wikiplugin_tour.php                                                                  |    27 +-
+ lib/wiki-plugins/wikiplugin_tracker.php                                                               |   195 ++++-
+ lib/wiki-plugins/wikiplugin_trackerfilter.php                                                         |    23 +-
+ lib/wiki-plugins/wikiplugin_trackeritemfield.php                                                      |     2 +-
+ lib/wiki-plugins/wikiplugin_trackerlist.php                                                           |    19 +-
+ lib/wiki-plugins/wikiplugin_trackerstat.php                                                           |     2 +-
+ lib/wiki-plugins/wikiplugin_trackertoggle.php                                                         |     8 +-
+ lib/wiki-plugins/wikiplugin_userlastlogged.php                                                        |    26 +-
+ lib/wiki-plugins/wikiplugin_vimeo.php                                                                 |    84 ++-
+ lib/wiki-plugins/wikiplugin_wikidiff.php                                                              |   115 +++
+ lib/wiki/editlib.php                                                                                  |     2 +-
+ lib/wiki/histlib.php                                                                                  |    30 +-
+ lib/wiki/renderlib.php                                                                                |     4 +-
+ lib/wiki/wikilib.php                                                                                  |    40 +-
+ lib/wizard/pages/user_preferences_params.php                                                          |     2 -
+ lib/ziplib.php                                                                                        |     4 +-

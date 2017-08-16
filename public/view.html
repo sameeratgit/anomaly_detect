@@ -1,92 +1,104 @@
 <html>
+
 <head>
-<script src="assets/jquery-1.12.4.min.js"></script> 
-<style>
-body * {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:12px;
-}
-th,td:first-child {
-    font-weight: bold;
-}
+    <script src="assets/jquery-1.12.4.min.js"></script>
+    <style>
+        body * {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
 
-td{
-border: 1px solid #eee;
-}
+        th,
+        td:first-child {
+            font-weight: bold;
+        }
 
-th.rotate {
-  height: 300px;
-  white-space: nowrap;
-}
+        td {
+            border: 1px solid #eee;
+        }
 
-th.rotate > div {
-  transform: 
-    translate(16px, 130px)
-    rotate(315deg);
-  width: 30px;
-}
-th.rotate > div > span {
-  border-bottom: 2px solid #eee;  
-  padding: 5px 10px;
-}
+        th.rotate {
+            height: 300px;
+            white-space: nowrap;
+        }
 
-tr:hover td {
-    background: #c7d4dd !important;
-}
-</style>		
+        th.rotate>div {
+            transform: translate(16px, 130px) rotate(315deg);
+            width: 30px;
+        }
+
+        th.rotate>div>span {
+            border-bottom: 2px solid #eee;
+            padding: 5px 10px;
+        }
+
+        tr:hover td {
+            background: #c7d4dd !important;
+        }
+    </style>
 </head>
+
 <body>
-    
     <div id="data"></div>
-<script type="text/javascript">
-$(document).ready(function(){ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: "output_tiki_v15.json",
+                success: function (result) {
+                    var data = result;
+                    console.log(data);
+                    content = '<table cellpadding="0" cellspacing="0">';
+                    content += "<thead>";
+                    content += "<th></th>";
+                    $.each(data, function (index, value) {
+                        $.each(value, function (innerIndex, innerValue) {
+                            content += '<th class="rotate"><div><span>' +
+                                innerIndex + '</span></div></th>';
+                        });
+                    });
+                    content += "</thead>";
 
-    $.ajax({url: "output.json", success: function(result){
-        
-        var data = result;
-        console.log (data);
-        content = '<table cellpadding="0" cellspacing="0">';
-        content += "<thead>";
-        content += "<th></th>";
-        $.each(data,function(index, value){
-            
-            $.each(value,function(innerIndex, innerValue){
-                content += '<th class="rotate"><div><span>'+innerIndex+'</span></div></th>';                             
-            })          
-            
-        })
-        content += "</thead>";
+                    $.each(data, function (index, value) {
+                        content += "<tr>";
+                        $.each(value, function (innerIndex, innerValue) {
+                            content += "<td>" + innerIndex + "</td>";
+                                $.each(innerValue, function (innerInnerIndex,
+                                    innerInnerValue) {
+                                    if ((innerInnerValue.afferent == 0 &&
+                                        innerInnerValue.afferent == 0) || innerIndex == innerInnerIndex) {
+                                        content += "<td>-</td>";
+                                    } else {
+                                        //content += "<td>"+JSON.stringify(innerInnerValue)+"</td>";            
+                                        content += "<td>";
+                                        var contentInfo = '';
+                                        if (innerInnerValue.afferent) {
+                                            contentInfo += "[A:" +
+                                                innerInnerValue.afferent +
+                                                "]"; // + innerInnerValue.afferent;
+                                        }
 
-        $.each(data,function(index, value){
-            content += "<tr>";
-            $.each(value,function(innerIndex, innerValue){
-                content += "<td>"+innerIndex+"</td>";
-                $.each(innerValue,function(innerInnerIndex, innerInnerValue){
-                    if(innerInnerValue.afferent == 0 && innerInnerValue.afferent==0){
-                        content += "<td>-</td>";
-                    } else {
-                        //content += "<td>"+JSON.stringify(innerInnerValue)+"</td>";            
-                        content += "<td>";
-						
-						if(innerInnerValue.afferent){
-							content += "a:"+innerInnerValue.afferent;
-						}
-						
-						if(innerInnerValue.efferent){
-							content += "e:"+innerInnerValue.efferent;
-						}
-                        content += "</td>";            
-                    }
-                })                         
-            })          
-            content += "</tr>";
-        })
+                                        if (innerInnerValue.efferent) {
+                                            contentInfo += "[E:" +
+                                                innerInnerValue.efferent +
+                                                "]"; // + innerInnerValue.efferent;
+                                        }
+                                        /*if (contentInfo != '') {
+                                            contentInfo += '<br/><--'
+                                        }*/
+                                        content += (contentInfo + "</td>");
+                                    }
+                                });
+                        });
+                        content += "</tr>";
+                    });
 
-        content += "</table>";
+                    content += "</table>";
 
-        $("#data").html(content);
-    }});
-});
-</script>
+                    $("#data").html(content);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

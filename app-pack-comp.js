@@ -3,10 +3,10 @@ var helper = require("./helper.js");
 var async = require("async");
 
 //XML Output from PHPDepend
-var xmlFilePath = 'sample_input.xml';
+var xmlFilePath = './public/data/dep_tiki_v15.xml';
 
 //Output file name
-var outputFile = 'output.json';
+var outputFile = './public/data/output_tiki_v15.json';
 
 //Need class comparison ? (true/false)
 const NEED_CLASS_COMPARISON = false;
@@ -60,6 +60,7 @@ if (NEED_CLASS_COMPARISON) {
                     });
                 }
             }
+            //console.log('Package Name: ' + packageName);
 
             //Scanning all classes inside the package.
             if (packageItem.class) {
@@ -74,7 +75,6 @@ if (NEED_CLASS_COMPARISON) {
                     processItem(classItem);
                 });
             }
-
         });
 
         callback(null, _output);
@@ -116,7 +116,7 @@ if (NEED_CLASS_COMPARISON) {
             packageData.forEach(function (packageItem) {
                 if (packageItem.$.name) {
                     var packageName = packageItem.$.name;
-
+                    if (packageName == 'Tiki\\Blogs' || packageName == 'Tiki\\Wiki') {
                     //Get all classes
                     if (packageItem.class) {
                         var packageClass = packageItem.class;
@@ -143,6 +143,7 @@ if (NEED_CLASS_COMPARISON) {
                                 });
                             }
                         });
+                    }
                     }
                 }
             });
@@ -182,40 +183,57 @@ if (NEED_CLASS_COMPARISON) {
         _output[_baseName] = {};
 
         _packageData.forEach(function (packageItem) {
-
             var packageName = packageItem.$.name;
+            if (!(packageName == '*' || packageName == '*/')) {
+                //console.log (packageName);
 
-            //Scanning all classes inside the package.
-            if (packageItem.class) {
-                packageItem.class.forEach(function (classItem) {
-                    processItem(classItem);
-                });
-            }
+                //Scanning all classes inside the package.
+                if (packageItem.class) {
+                    packageItem.class.forEach(function (classItem) {
+                        processItem(classItem);
+                    });
+                }
 
-            //Scanning all interfaces inside the package.
-            if (packageItem.interface) {
-                packageItem.interface.forEach(function (classItem) {
-                    processItem(classItem);
-                });
+                //Scanning all interfaces inside the package.
+                if (packageItem.interface) {
+                    packageItem.interface.forEach(function (classItem) {
+                        processItem(classItem);
+                    });
+                }
             }
 
             //Process class/interface
             function processItem(classItem) {
                 var className = classItem.$.name;
-                var _currentName = packageName + ':' + className;
+                //console.log (className);
+                if ((packageName.trim() == '*' || packageName.trim() == '*/') || (className.trim() == '*' || className.trim() == '*/'))
+                    return;
 
-                _output[_baseName][packageName] = {};
+                //var _currentName = packageName + ':' + className;
+                var _currentName = packageName;
+
+                _output[_baseName][_currentName] = {};
+                var classFileName = '';
+
+                if (classItem.file && classItem.file[0]) {
+                    classFileName = classItem.file[0].$.name;
+                }
+                classFileName = classFileName.replace('/Volumes/Data/Work/Personal/Academic/Repos/Tiki', '');
+                if (classFileName != '') {
+                    _output[_baseName][_currentName].fileName = classFileName;
+                }
 
                 var efferentTypes = classItem.efferent[0].type;
+                
                 if (efferentTypes) {
                     efferentTypes.forEach(function (efferentTypeItem) {
                         var _effNamespace = efferentTypeItem.$.namespace;
                         if (_basePackage == _effNamespace) {
-                            if (typeof _output[_baseName][packageName].efferent == 'undefined') {
-                                _output[_baseName][packageName] = {};
-                                _output[_baseName][packageName].efferent = 0;
+                            if (typeof _output[_baseName][_currentName].efferent == 'undefined') {
+                                _output[_baseName][_currentName] = {};
+                                _output[_baseName][_currentName].efferent = 0;
                             }
-                            (_output[_baseName][packageName].efferent) ++;
+                            (_output[_baseName][_currentName].efferent) ++;
                         }
                     });
                 }
@@ -225,11 +243,11 @@ if (NEED_CLASS_COMPARISON) {
                     afferentTypes.forEach(function (afferentTypeItem) {
                         var _affNamespace = afferentTypeItem.$.namespace;
                         if (_basePackage == _affNamespace) {
-                            if (typeof _output[_baseName][packageName].afferent == 'undefined') {
-                                _output[_baseName][packageName] = {};
-                                _output[_baseName][packageName].afferent = 0;
+                            if (typeof _output[_baseName][_currentName].afferent == 'undefined') {
+                                _output[_baseName][_currentName] = {};
+                                _output[_baseName][_currentName].afferent = 0;
                             }
-                            (_output[_baseName][packageName].afferent) ++;
+                            (_output[_baseName][_currentName].afferent) ++;
                         }
                     });
                 }
@@ -276,34 +294,36 @@ if (NEED_CLASS_COMPARISON) {
             packageData.forEach(function (packageItem) {
                 if (packageItem.$.name) {
                     var packageName = packageItem.$.name;
-
-                    //Get all classes
-                    if (packageItem.class) {
-                        var packageClass = packageItem.class;
-                        packageClass.forEach(function (classItem) {
-                            if (classItem.$.name) {
-                                var className = classItem.$.name;
-                                if (typeof _packageClassList[packageName] === 'undefined') {
-                                    _packageClassList[packageName] = [];
+                    if (!(packageName == '*' || packageName == '*/')) {
+                        //Get all classes
+                        if (packageItem.class) {
+                            var packageClass = packageItem.class;
+                            packageClass.forEach(function (classItem) {
+                                if (classItem.$.name) {
+                                    var className = classItem.$.name;
+                                    if (typeof _packageClassList[packageName] === 'undefined') {
+                                        _packageClassList[packageName] = [];
+                                    }
+                                    _packageClassList[packageName].push(className);
                                 }
-                                _packageClassList[packageName].push(className);
-                            }
-                        });
+                            });
+                        }
+
+                        //Get all interfaces
+                        if (packageItem.interface) {
+                            var packageClass = packageItem.interface;
+                            packageClass.forEach(function (classItem) {
+                                if (classItem.$.name) {
+                                    var className = classItem.$.name;
+                                    if (typeof _packageClassList[packageName] === 'undefined') {
+                                        _packageClassList[packageName] = [];
+                                    }
+                                    _packageClassList[packageName].push(className);
+                                }
+                            });
+                        }
                     }
 
-                    //Get all interfaces
-                    if (packageItem.interface) {
-                        var packageClass = packageItem.interface;
-                        packageClass.forEach(function (classItem) {
-                            if (classItem.$.name) {
-                                var className = classItem.$.name;
-                                if (typeof _packageClassList[packageName] === 'undefined') {
-                                    _packageClassList[packageName] = [];
-                                }
-                                _packageClassList[packageName].push(className);
-                            }
-                        });
-                    }
                 }
             });
 

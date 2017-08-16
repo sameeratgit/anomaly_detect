@@ -1,0 +1,2 @@
+php pdepend.php --dependency-xml=dep_tiki.xml ../../../Tiki/lib
+
