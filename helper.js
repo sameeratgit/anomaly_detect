@@ -205,14 +205,15 @@ exports.processDiff = function (data, config, cb) {
                         for (var packageIndex in dependJSON) {
                             var package = dependJSON[packageIndex];
                             for (var packageKey in package) {
-                                if (_file.trim().toLowerCase().replace('/', '\\\\').includes(packageKey.trim().toLowerCase())) {
-                                    matchingPackage = packageKey;
-                                }
+                                //if (('\\'+_file).trim().toLowerCase().replace('/', '\\\\').includes(packageKey.trim().toLowerCase())) {
+                                //    matchingPackage = packageKey;
+                                //}
                                 var packageClasses = package[packageKey];
                                 for (var classKey in packageClasses) {
                                     var classObj = packageClasses[classKey];
 
-                                    if (classObj.fileName && classObj.fileName.trim().toLowerCase() == '/' + _file.trim().toLowerCase()) {
+                                    //if (classObj.fileName && classObj.fileName.trim().toLowerCase() == '/' + _file.trim().toLowerCase()) {
+                                    if (classObj.fileName && classObj.fileName.trim().toLowerCase().includes(_file.trim().toLowerCase())) {
                                         module = classKey;
                                         break;
                                     }
@@ -226,7 +227,7 @@ exports.processDiff = function (data, config, cb) {
                                 break;
                         }
                     }
-                    output[_file].module = module;// ? module : matchingPackage;
+                    output[_file].module = module; // ? module : matchingPackage;
 
                 }
             }

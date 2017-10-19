@@ -1,12 +1,12 @@
 var fs = require("fs");
 var helper = require("./helper.js");
 
-var inputFile = './public/data/tiki_diff_14-0_14-1.txt';
-var outputFile = './public/data/tiki_diff_14-0_14-1.json';
+var inputFile = './public/data/tiki_diff_14-0_15-0.txt';
+var outputFile = './public/data/tiki_diff_14-0_15-0.json';
 
 var config = {
     needFileChange: true, //Whether the output needs file additions and removals.
-    dependFile: './public/data/output_tiki_v14.json'
+    dependFile: './public/data/output_tiki_v15.json'
 }
 
 /**

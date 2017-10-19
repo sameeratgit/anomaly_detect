@@ -49,7 +49,7 @@
                     console.log(data);
                     content = '<table cellpadding="0" cellspacing="0">';
                     content += "<thead>";
-                    content += "<th></th>";
+                    content += "<th valign='bottom'>Direction of Coupling:<br/> << == </th>";
                     $.each(data, function (index, value) {
                         $.each(value, function (innerIndex, innerValue) {
                             content += '<th class="rotate"><div><span>' +
@@ -65,7 +65,7 @@
                                 $.each(innerValue, function (innerInnerIndex,
                                     innerInnerValue) {
                                     if ((innerInnerValue.afferent == 0 &&
-                                        innerInnerValue.afferent == 0) || innerIndex == innerInnerIndex) {
+                                        innerInnerValue.afferent == 0)) {
                                         content += "<td>-</td>";
                                     } else {
                                         //content += "<td>"+JSON.stringify(innerInnerValue)+"</td>";            
